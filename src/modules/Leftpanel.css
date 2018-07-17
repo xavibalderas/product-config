@@ -28,6 +28,7 @@
       background-color: darkgrey;
   }
 
+
   .Leftpanel .infopanel .productinfo {
         background-color    : rgba(255, 255, 255, 0.0);
         top                 : 156px;
@@ -46,6 +47,10 @@
         color               : rgba(0, 0, 0, 1.0);
         text-align          : left;
         line-height         : 33.0px;
+  }
+
+  .Leftpanel .infopanel .overlayinfo {
+      z-index: 60;
   }
 
   .Leftpanel .btn2 {
@@ -131,4 +136,8 @@
     color               : rgba(0, 0, 0, 1.0);
     text-align          : left;
     line-height         : 33.0px;
+}
+
+.slide-pane {
+    z-index: 0;
 }

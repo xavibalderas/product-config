@@ -48,10 +48,11 @@ class Leftpanel extends Component {
         return (
             <div className="Leftpanel">
                 
-
                 <button class= "btn1" onClick={ () => this.setState({ isINFOPaneOpen: true})}> <i className="fa fa-bars"></i>     
                 </button>
+
                 <SlidingPane className='infopanel'
+                    overlayClassName='overlayinfo'
                     isOpen={ this.state.isINFOPaneOpen }
                     title='Product Information'
                     from='left'
@@ -98,14 +99,14 @@ class Leftpanel extends Component {
                 </SlidingPane>
 
 
-                <button class= "btn3" onClick={ () => this.setState({ isSENDPaneOpen: true})}> <i className="fa fa-envelope"></i>     
+                <button class= "btn3" onClick={ () => this.setState({ isMAILPaneOpen: true})}> <i className="fa fa-envelope"></i>     
                 </button>
                 <SlidingPane className='sendpanel'
-                    isOpen={ this.state.isSENDPaneOpen }
+                    isOpen={ this.state.isMAILPaneOpen }
                     title='Send Configuration'
                     from='left'
                     width='400px'
-                    onRequestClose={ () => this.setState({ isSENDPaneOpen: false }) }>
+                    onRequestClose={ () => this.setState({ isMAILPaneOpen: false }) }>
 
                     <div className="sendinfo" style={divStyle}>
                         <div class="wecansendyouall">
@@ -122,7 +123,6 @@ class Leftpanel extends Component {
                     </div>
 
                 </SlidingPane>
-
 
             </div>
         

@@ -134,14 +134,14 @@
     line-height         : 33.0px;
   }
 
-  .Configurator .defaultproduct1 {
+  .Configurator .sizedrop {
     background-color    : rgba(255, 255, 255, 0.0);
     top                 : 630px;
     height              : auto;
     width               : auto;
     position            : absolute;
     margin              : 0;
-    left                : 161px;
+    left                : 130px;
     -ms-transform       : rotate(0deg); /* IE 9 */
     -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
     transform           : rotate(0deg);
@@ -152,9 +152,10 @@
     color               : rgba(51, 51, 51, 1.0);
     text-align          : left;
     line-height         : 49.0px;
+    z-index             : 1;
   }
 
-  .Configurator .defaultproduct2 {
+  .Configurator .colordrop {
     background-color    : rgba(255, 255, 255, 0.0);
     top                 : 630px;
     height              : auto;
@@ -172,6 +173,7 @@
     color               : rgba(51, 51, 51, 1.0);
     text-align          : left;
     line-height         : 49.0px;
+    z-index             : 1;
   }
 
   .Configurator .defaultproduct3 {
@@ -233,7 +235,7 @@
     top                 : 0px;
     height              : 446px;
     width               : 1293px;
-    position            : absolute;
+    position            : relative;
     margin              : 0;
     left                : 0px;
     -ms-transform       : rotate(0deg); /* IE 9 */
@@ -249,55 +251,6 @@
     position            : absolute;
     margin              : 0;
     left                : -39px;
-    -ms-transform       : rotate(0deg); /* IE 9 */
-    -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
-    transform           : rotate(0deg);
-  }
-
-  .Configurator .triangle1 {
-    background-color    : rgba(255, 255, 255, 0.0);
-    top                 : 650px;
-    height              : 16px;
-    width               : 16px;
-    position            : absolute;
-    margin              : 0;
-    left                : 132px;
-    -ms-transform       : rotate(0deg); /* IE 9 */
-    -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
-    transform           : rotate(0deg);
-  }
-  .Configurator .triangle2 {
-    background-color    : rgba(255, 255, 255, 0.0);
-    top                 : 650px;
-    height              : 16px;
-    width               : 16px;
-    position            : absolute;
-    margin              : 0;
-    left                : 405px;
-    -ms-transform       : rotate(0deg); /* IE 9 */
-    -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
-    transform           : rotate(0deg);
-  }
-  .Configurator .triangle3 {
-    background-color    : rgba(255, 255, 255, 0.0);
-    top                 : 650px;
-    height              : 16px;
-    width               : 16px;
-    position            : absolute;
-    margin              : 0;
-    left                : 627px;
-    -ms-transform       : rotate(0deg); /* IE 9 */
-    -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
-    transform           : rotate(0deg);
-  }
-  .Configurator .triangle4 {
-    background-color    : rgba(255, 255, 255, 0.0);
-    top                 : 650px;
-    height              : 16px;
-    width               : 16px;
-    position            : absolute;
-    margin              : 0;
-    left                : 850px;
     -ms-transform       : rotate(0deg); /* IE 9 */
     -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
     transform           : rotate(0deg);
