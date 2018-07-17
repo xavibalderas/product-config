@@ -4,12 +4,15 @@
   "private": true,
   "dependencies": {
     "ajv": "^6.5.2",
+    "font-awesome": "^4.7.0",
     "react": "^16.4.1",
     "react-atmosphere-menu": "^0.5.4",
     "react-dom": "^16.4.1",
+    "react-modal": "^3.5.1",
     "react-scripts": "1.1.4",
     "react-sidemenu": "0.0.14",
-    "react-slide-menu": "^0.5.1"
+    "react-slide-menu": "^0.5.1",
+    "react-sliding-pane": "^2.0.2"
   },
   "scripts": {
     "start": "react-scripts start",

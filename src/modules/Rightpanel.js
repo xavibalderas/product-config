@@ -1,12 +1,38 @@
 import React, { Component } from 'react';
 import './Rightpanel.css'
+//import Modal from 'react-modal';
+//import SlidingPane from 'react-sliding-pane';
+import 'react-sliding-pane/dist/react-sliding-pane.css';
 
 class Rightpanel extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+          isPaneOpen: false,
+        };
+      }
+
     render() {
         return (
             <div className="Rightpanel">
 
                 <img src={ require('../img/main-screen-landscape-line.png')} alt="" class="titleline" />
+
+                {/*
+                <button onClick={() => this.setState({ isPaneOpen: true })}> RIGHT PANEL </button>
+                <SlidingPane  
+                    className='infoPanel'
+                    isOpen={ this.state.isPaneOpen }
+                    title='Title'
+                    subtitle='Subtitle'
+                    onRequestClose={ () => {
+                      this.setState({ isPaneOpen: false });
+                    } }>
+                    <div> Pane content </div>
+                </SlidingPane>
+                */}
+
+                
 
                 <div class="youcandoityourse">
                     You can do it yourself,

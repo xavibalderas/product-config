@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans:400,700');
+
+@font-face {
+  font-family: "FontAwesome5FreeSolid";
+  src: url('../fonts/Font\ Awesome\ 5\ Free-Solid-900.otf') format("opentype");
+}
+
+.Leftpanel .btn1 {
+    background-color    : rgba(255, 255, 255, 0.0);
+    top                 : 103px;
+    border              : none;
+    height              : auto;
+    width               : auto;
+    position            : absolute;
+    margin              : 0;
+    left                : 32px;
+    -ms-transform       : rotate(0deg); /* IE 9 */
+    -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
+    transform           : rotate(0deg);
+    font-family         : "FontAwesome5FreeSolid", Helvetica, Arial, serif;
+    font-size           : 48.0px;
+    color               : rgba(100, 100, 100, 1.0);
+    text-align          : left;
+    line-height         : 48.0px;
+  }
+
+  .Leftpanel .btn1:hover {
+      background-color: darkgrey;
+  }
+
+  .Leftpanel .infopanel .productinfo {
+        background-color    : rgba(255, 255, 255, 0.0);
+        top                 : 156px;
+        height              : auto;
+        width               : 400px;
+        position            : absolute;
+        margin              : 0;
+        left                : 32px;
+        -ms-transform       : rotate(0deg); /* IE 9 */
+        -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
+        transform           : rotate(0deg);
+        font-family         : "Noto Sans", Helvetica, Arial, serif;
+        font-weight         : 400;
+        font-style          : normal;
+        font-size           : 24.0px;
+        color               : rgba(0, 0, 0, 1.0);
+        text-align          : left;
+        line-height         : 33.0px;
+  }
+
+  .Leftpanel .btn2 {
+    background-color    : rgba(255, 255, 255, 0.0);
+    top                 : 197px;
+    border              : none;
+    height              : auto;
+    width               : auto;
+    position            : absolute;
+    margin              : 0;
+    left                : 32px;
+    -ms-transform       : rotate(0deg); /* IE 9 */
+    -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
+    transform           : rotate(0deg);
+    font-family         : "FontAwesome5FreeSolid", Helvetica, Arial, serif;
+    font-size           : 48.0px;
+    color               : rgba(100, 100, 100, 1.0);
+    text-align          : left;
+    line-height         : 48.0px;
+  }
+  .Leftpanel .btn2:hover {
+    background-color: darkgrey;
+}
+ 
+.Leftpanel .buypanel .buyinfo {
+    background-color    : rgba(255, 255, 255, 0.0);
+    top                 : 156px;
+    height              : auto;
+    width               : 400px;
+    position            : absolute;
+    margin              : 0;
+    left                : 31px;
+    -ms-transform       : rotate(0deg); /* IE 9 */
+    -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
+    transform           : rotate(0deg);
+    font-family         : "Noto Sans", Helvetica, Arial, serif;
+    font-weight         : 400;
+    font-style          : normal;
+    font-size           : 24.0px;
+    color               : rgba(0, 0, 0, 1.0);
+    text-align          : left;
+    line-height         : 33.0px;
+}
+
+.Leftpanel .btn3 {
+    background-color    : rgba(255, 255, 255, 0.0);
+    top                 : 283px;
+    height              : auto;
+    border              : none;
+    width               : auto;
+    position            : absolute;
+    margin              : 0;
+    left                : 32px;
+    -ms-transform       : rotate(0deg); /* IE 9 */
+    -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
+    transform           : rotate(0deg);
+    font-family         : "FontAwesome5FreeSolid", Helvetica, Arial, serif;
+    font-size           : 48.0px;
+    color               : rgba(100, 100, 100, 1.0);
+    text-align          : left;
+    line-height         : 48.0px;
+  }
+
+  .Leftpanel .btn3:hover {
+    background-color: darkgrey;
+}
+
+.Leftpanel .sendpanel .sendinfo {
+    background-color    : rgba(255, 255, 255, 0.0);
+    top                 : 156px;
+    height              : auto;
+    width               : 350px;
+    position            : absolute;
+    margin              : 0;
+    left                : 32px;
+    -ms-transform       : rotate(0deg); /* IE 9 */
+    -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
+    transform           : rotate(0deg);
+    font-family         : "Noto Sans", Helvetica, Arial, serif;
+    font-weight         : 400;
+    font-style          : normal;
+    font-size           : 24.0px;
+    color               : rgba(0, 0, 0, 1.0);
+    text-align          : left;
+    line-height         : 33.0px;
+}

@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
+import 'react-sliding-pane/dist/react-sliding-pane.css';
 import './App.css';
 import Header from './modules/Header';
 import Configurator from './modules/Configurator';
 import Rightpanel from './modules/Rightpanel';
-
-var nav = [
-  {label: 'Info', path: '/'},
-]
+import Leftpanel from './modules/Leftpanel';
 
 class App extends Component {
- 
   render() {
     return (
       <div className="mainscreenlandscape">
@@ -24,22 +21,13 @@ class App extends Component {
 
                 <Rightpanel />
 
-                <div class="bars">
-                    bars
-                </div>
-
-                <div class="envelope">
-                    envelope
-                </div>
-
-                <div class="shoppingcart">
-                    shopping-cart
-                </div>
+                <Leftpanel />
+                
+ 
 
             </div>
-
       </div>
-    );
+      );
   }
 }
 
