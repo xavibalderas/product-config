@@ -38,12 +38,12 @@
   }
   .Rightpanel .delivery {
     background-color    : rgba(255, 255, 255, 0.0);
-    top                 : 18%;
+    top                 : 20%;
     height              : 15%;
     width               : auto;
     position            : absolute;
     margin              : 0;
-    left                : 68%;
+    left                : 71%;
     -ms-transform       : rotate(0deg); /* IE 9 */
     -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
     transform           : rotate(0deg);
@@ -62,114 +62,114 @@
   }
   .Rightpanel .wedeliver {
     background-color    : rgba(255, 255, 255, 0.0);
-    top                 : 213px;
+    top                 : 18%;
     height              : auto;
     width               : auto;
     position            : absolute;
-    margin              : 0;
-    left                : 1684px;
+    margin              : 0%;
+    left                : 82%;
     -ms-transform       : rotate(0deg); /* IE 9 */
     -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
     transform           : rotate(0deg);
     font-family         : "Noto Sans", Helvetica, Arial, serif;
     font-weight         : 700;
     font-style          : normal;
-    font-size           : 24.0px;
+    font-size           : 18.0px;
     color               : rgba(51, 51, 51, 1.0);
     text-align          : left;
     line-height         : 33.0px;
   }
   .Rightpanel .seemoreondelivery {
     background-color    : rgba(255, 255, 255, 0.0);
-    top                 : 279px;
+    top                 : 25%;
     height              : auto;
     width               : auto;
     position            : absolute;
     margin              : 0;
-    left                : 1684px;
+    left                : 82%;
     -ms-transform       : rotate(0deg); /* IE 9 */
     -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
     transform           : rotate(0deg);
     font-family         : "Noto Sans", Helvetica, Arial, serif;
     font-weight         : 400;
     font-style          : normal;
-    font-size           : 18.0px;
+    font-size           : 16.0px;
     color               : rgba(0, 91, 156, 1.0);
     text-align          : left;
-    line-height         : 24.0px;
+    line-height         : 18.0px;
   }
   .Rightpanel .seemoreonassembly {
     background-color    : rgba(255, 255, 255, 0.0);
-    top                 : 450px;
+    top                 : 39%;
     height              : auto;
     width               : auto;
     position            : absolute;
     margin              : 0;
-    left                : 1684px;
+    left                : 82%;
     -ms-transform       : rotate(0deg); /* IE 9 */
     -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
     transform           : rotate(0deg);
     font-family         : "Noto Sans", Helvetica, Arial, serif;
     font-weight         : 400;
     font-style          : normal;
-    font-size           : 18.0px;
+    font-size           : 16.0px;
     color               : rgba(0, 91, 156, 1.0);
     text-align          : left;
-    line-height         : 24.0px;
+    line-height         : 18.0px;
   }
   .Rightpanel .weassemble {
     background-color    : rgba(255, 255, 255, 0.0);
-    top                 : 384px;
+    top                 : 32%;
     height              : auto;
     width               : auto;
     position            : absolute;
     margin              : 0;
-    left                : 1684px;
+    left                : 82%;
     -ms-transform       : rotate(0deg); /* IE 9 */
     -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
     transform           : rotate(0deg);
     font-family         : "Noto Sans", Helvetica, Arial, serif;
     font-weight         : 700;
     font-style          : normal;
-    font-size           : 24.0px;
+    font-size           : 18.0px;
     color               : rgba(51, 51, 51, 1.0);
     text-align          : left;
     line-height         : 33.0px;
   }
   .Rightpanel .pricedelivery {
     background-color    : rgba(255, 255, 255, 0.0);
-    top                 : 246px;
+    top                 : 21%;
     height              : auto;
     width               : auto;
     position            : absolute;
     margin              : 0;
-    left                : 1684px;
+    left                : 82%;
     -ms-transform       : rotate(0deg); /* IE 9 */
     -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
     transform           : rotate(0deg);
     font-family         : "Noto Sans", Helvetica, Arial, serif;
     font-weight         : 700;
     font-style          : normal;
-    font-size           : 24.0px;
+    font-size           : 18.0px;
     color               : rgba(51, 51, 51, 1.0);
     text-align          : left;
     line-height         : 33.0px;
   }
   .Rightpanel .priceassembly {
     background-color    : rgba(255, 255, 255, 0.0);
-    top                 : 417px;
+    top                 : 35%;
     height              : auto;
     width               : auto;
     position            : absolute;
     margin              : 0;
-    left                : 1684px;
+    left                : 82%;
     -ms-transform       : rotate(0deg); /* IE 9 */
     -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
     transform           : rotate(0deg);
     font-family         : "Noto Sans", Helvetica, Arial, serif;
     font-weight         : 700;
     font-style          : normal;
-    font-size           : 24.0px;
+    font-size           : 18.0px;
     color               : rgba(51, 51, 51, 1.0);
     text-align          : left;
     line-height         : 33.0px;
@@ -177,19 +177,19 @@
 
   .Rightpanel .assembleicon {
     background-color    : rgba(255, 255, 255, 0.0);
-    top                 : 356px;
-    height              : 108px;
-    width               : 92px;
+    top                 : 31%;
+    height              : auto;
+    width               : auto;
     position            : absolute;
     margin              : 0;
-    left                : 1532px;
+    left                : 72%;
     -ms-transform       : rotate(0deg); /* IE 9 */
     -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
     transform           : rotate(0deg);
   }
   .Rightpanel .assembleicon .part1 {
     background-color    : rgba(255, 255, 255, 0.0);
-    top                 : 58px;
+    top                 : 57px;
     height              : 50px;
     width               : 62px;
     position            : absolute;

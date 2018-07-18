@@ -7,19 +7,19 @@
 
 .Header .producttype {
     background-color    : rgba(255, 255, 255, 0.0);
-    top                 : 52px;
+    top                 : 5%;
     height              : auto;
     width               : auto;
     position            : absolute;
     margin              : 0;
-    left                : 124px;
+    left                : 9%;
     -ms-transform       : rotate(0deg); /* IE 9 */
     -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
     transform           : rotate(0deg);
     font-family         : "Noto Sans", Helvetica, Arial, serif;
     font-weight         : 400;
     font-style          : normal;
-    font-size           : 24.0px;
+    font-size           : 20.0px;
     color               : rgba(0, 0, 0, 1.0);
     text-align          : left;
     line-height         : 33.0px;
@@ -27,19 +27,19 @@
 
   .Header .productname {
     background-color    : rgba(255, 255, 255, 0.0);
-    top                 : 81px;
+    top                 : 8%;
     height              : auto;
     width               : auto;
     position            : absolute;
     margin              : 0;
-    left                : 124px;
+    left                : 9%;
     -ms-transform       : rotate(0deg); /* IE 9 */
     -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
     transform           : rotate(0deg);
     font-family         : "Noto Sans", Helvetica, Arial, serif;
     font-weight         : 700;
     font-style          : normal;
-    font-size           : 72.0px;
+    font-size           : 52.0px;
     color               : rgba(0, 0, 0, 1.0);
     text-align          : left;
     line-height         : 98.0px;
@@ -47,38 +47,38 @@
 
   .Header .price {
     background-color    : rgba(255, 255, 255, 0.0);
-    top                 : 161px;
+    top                 : 15%;
     height              : auto;
     width               : auto;
     position            : absolute;
     margin              : 0;
-    left                : 120px;
+    left                : 9%;
     -ms-transform       : rotate(0deg); /* IE 9 */
     -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
     transform           : rotate(0deg);
     font-family         : "Noto Sans", Helvetica, Arial, serif;
     font-weight         : 700;
     font-style          : normal;
-    font-size           : 96.0px;
+    font-size           : 74.0px;
     color               : rgba(0, 0, 0, 1.0);
     text-align          : left;
-    line-height         : 131.0px;
+    line-height         : 132.0px;
   }
   .Header .optionsdisclaimer {
     background-color    : rgba(255, 255, 255, 0.0);
-    top                 : 292px;
+    top                 : 30%;
     height              : auto;
     width               : auto;
     position            : absolute;
     margin              : 0;
-    left                : 132px;
+    left                : 9%;
     -ms-transform       : rotate(0deg); /* IE 9 */
     -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
     transform           : rotate(0deg);
     font-family         : "Noto Sans", Helvetica, Arial, serif;
     font-weight         : 400;
     font-style          : italic;
-    font-size           : 18.0px;
+    font-size           : 16.0px;
     color               : rgba(100, 100, 100, 1.0);
     text-align          : left;
     line-height         : 24.0px;
@@ -86,17 +86,17 @@
 
   .Header .rating {
     background-color    : rgba(255, 255, 255, 0.0);
-    top                 : 331px;
+    top                 : 34%;
     height              : auto;
-    width               : 180px;
+    width               : 60%;
     position            : absolute;
     margin              : 0;
-    left                : 124px;
+    left                : 9%;
     -ms-transform       : rotate(0deg); /* IE 9 */
     -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
     transform           : rotate(0deg);
     font-family         : "PingFangSC-Semibold", Helvetica, Arial, serif;
-    font-size           : 36.0px;
+    font-size           : 28.0px;
     color               : rgba(100, 100, 100, 1.0);
     text-align          : left;
     line-height         : 50.0px;
@@ -104,32 +104,32 @@
 
   .Header .productdescription {
     background-color    : rgba(255, 255, 255, 0.0);
-    top                 : 397px;
+    top                 : 40%;
     height              : auto;
-    width               : 1295px;
+    width               : 50%;
     position            : absolute;
     margin              : 0;
-    left                : 132px;
+    left                : 9%;
     -ms-transform       : rotate(0deg); /* IE 9 */
     -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
     transform           : rotate(0deg);
     font-family         : "Noto Sans", Helvetica, Arial, serif;
     font-weight         : 400;
     font-style          : normal;
-    font-size           : 24.0px;
+    font-size           : 16.0px;
     color               : rgba(0, 0, 0, 1.0);
-    text-align          : left;
-    line-height         : 33.0px;
+    text-align          : justify;
+    line-height         : 28.0px;
   }
 
   .Header .newicon {
     background-color    : rgba(255, 255, 255, 0.0);
-    top                 : 52px;
-    height              : 213px;
-    width               : 213px;
+    top                 : 5%;
+    height              : auto;
+    width               : auto;
     position            : absolute;
     margin              : 0;
-    left                : 1180px;
+    left                : 52%;
     -ms-transform       : rotate(0deg); /* IE 9 */
     -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
     transform           : rotate(0deg);
@@ -137,8 +137,8 @@
   .Header .newicon .fill1 {
     background-color    : rgba(255, 255, 255, 0.0);
     top                 : 0px;
-    height              : 213px;
-    width               : 213px;
+    height              : 150px;
+    width               : 150px;
     position            : absolute;
     margin              : 0;
     left                : 0px;
@@ -148,36 +148,36 @@
   }
   .Header .newicon .fill2 {
     background-color    : rgba(255, 255, 255, 0.0);
-    top                 : 80px;
-    height              : 42px;
-    width               : 37px;
+    top                 : 65px;
+    height              : 20;
+    width               : 18px;
     position            : absolute;
     margin              : 0;
-    left                : 43px;
+    left                : 40px;
     -ms-transform       : rotate(0deg); /* IE 9 */
     -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
     transform           : rotate(0deg);
   }
   .Header .newicon .fill3 {
     background-color    : rgba(255, 255, 255, 0.0);
-    top                 : 80px;
-    height              : 42px;
-    width               : 24px;
+    top                 : 65px;
+    height              : 20px;
+    width               : 14px;
     position            : absolute;
     margin              : 0;
-    left                : 89px;
+    left                : 65px;
     -ms-transform       : rotate(0deg); /* IE 9 */
     -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
     transform           : rotate(0deg);
   }
   .Header .newicon .fill4 {
     background-color    : rgba(255, 255, 255, 0.0);
-    top                 : 80px;
-    height              : 42px;
-    width               : 57px;
+    top                 : 65px;
+    height              : 20px;
+    width               : 28px;
     position            : absolute;
     margin              : 0;
-    left                : 114px;
+    left                : 85px;
     -ms-transform       : rotate(0deg); /* IE 9 */
     -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
     transform           : rotate(0deg);
