@@ -81,7 +81,7 @@
     width               : auto;
     position            : absolute;
     margin              : 0;
-    left                : 405px;
+    left                : 436px;
     -ms-transform       : rotate(0deg); /* IE 9 */
     -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
     transform           : rotate(0deg);
@@ -101,7 +101,7 @@
     width               : auto;
     position            : absolute;
     margin              : 0;
-    left                : 627px;
+    left                : 658px;
     -ms-transform       : rotate(0deg); /* IE 9 */
     -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
     transform           : rotate(0deg);
@@ -121,7 +121,7 @@
     width               : auto;
     position            : absolute;
     margin              : 0;
-    left                : 850px;
+    left                : 881px;
     -ms-transform       : rotate(0deg); /* IE 9 */
     -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
     transform           : rotate(0deg);
@@ -175,8 +175,7 @@
     line-height         : 49.0px;
     z-index             : 1;
   }
-
-  .Configurator .defaultproduct3 {
+  .Configurator .slattdrop {
     background-color    : rgba(255, 255, 255, 0.0);
     top                 : 630px;
     height              : auto;
@@ -194,9 +193,9 @@
     color               : rgba(51, 51, 51, 1.0);
     text-align          : left;
     line-height         : 49.0px;
+    z-index             : 1;
   }
-
-  .Configurator .defaultproduct4 {
+  .Configurator .matressdrop {
     background-color    : rgba(255, 255, 255, 0.0);
     top                 : 630px;
     height              : auto;
@@ -214,7 +213,11 @@
     color               : rgba(51, 51, 51, 1.0);
     text-align          : left;
     line-height         : 49.0px;
+    z-index             : 1;
   }
+
+
+
 
   .Configurator .productimage {
     background-color    : rgba(255, 255, 255, 0.0);

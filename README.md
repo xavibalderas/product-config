@@ -8,8 +8,15 @@ npm install
 npm start
 ```
 
+And then go to http://localhost:3000
+
 ## Description
-TBD
+Product Configurator is a web application for configuring product combinations. It uses React and GrapQL.
 
 
 ## To-Do
+- [x] UX/UI design
+- [x] Frontend wireframe
+- [ ] Backend
+- [ ] Testing
+- [ ] Deploy
