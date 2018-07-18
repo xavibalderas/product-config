@@ -16,9 +16,6 @@ const matressOptions = [
     'Hamarvik','Kartoffel','Paprika'
 ]
 
-const defaultSizeOption = sizeOptions[0]
-const defaultColorOption = colorOptions[0]
-
 class Configurator extends Component {
     constructor(props) {
         super(props)
@@ -57,7 +54,7 @@ class Configurator extends Component {
         const defaultSlattOption = this.state.slattSelected
         const defaultMatressOption = this.state.matressSelected
 
-        const placeHolderValueSize = typeof this.state.sizeSelected === 'string' ? this.state.sizeSelected : this.state.sizeSelected.label
+       //const placeHolderValueSize = typeof this.state.sizeSelected === 'string' ? this.state.sizeSelected : this.state.sizeSelected.label
 
         return (
             <div className="Configurator">

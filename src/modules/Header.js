@@ -10,27 +10,27 @@ class Header extends Component {
                     Bed frame, pine
                 </div>
 
-                <div class="productname">
+                <div className="productname">
                     TARVA
                 </div>
 
-                <div class="price">
+                <div className="price">
                     CHF 9999.99
                 </div>
 
-                <div class="optionsdisclaimer">
+                <div className="optionsdisclaimer">
                     The price reflects selected options
                 </div>
 
-                <div class="rating">
+                <div className="rating">
                     ☆☆☆☆☆
                 </div>
 
-                <div class="productdescription">
+                <div className="productdescription">
                     TARVA bed frame is a modern example of Scandinavian furniture tradition – a simple design and untreated wood. A timeless expression mixes nicely with a variety of other styles and furniture.
                 </div>
 
-                <div class="newicon">
+                <div className="newicon">
                     <img src={ require('../img/main-screen-landscape-fill-1@2x.png')} alt="" class="fill1" />
                     <img src={ require('../img/main-screen-landscape-fill-3@2x.png')} alt="" class="fill2" />
                     <img src={ require('../img/main-screen-landscape-fill-5@2x.png')} alt="" class="fill3" />
