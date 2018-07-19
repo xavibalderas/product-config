@@ -13,12 +13,12 @@
     width               : auto;
     position            : absolute;
     margin              : 0;
-    left                : 32px;
+    left                : 3%;
     -ms-transform       : rotate(0deg); /* IE 9 */
     -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
     transform           : rotate(0deg);
     font-family         : "FontAwesome5FreeSolid", Helvetica, Arial, serif;
-    font-size           : 48.0px;
+    font-size           : 4vw;
     color               : rgba(100, 100, 100, 1.0);
     text-align          : left;
     line-height         : 48.0px;
@@ -61,12 +61,12 @@
     width               : auto;
     position            : absolute;
     margin              : 0;
-    left                : 32px;
+    left                : 3%;
     -ms-transform       : rotate(0deg); /* IE 9 */
     -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
     transform           : rotate(0deg);
     font-family         : "FontAwesome5FreeSolid", Helvetica, Arial, serif;
-    font-size           : 48.0px;
+    font-size           : 4vw;
     color               : rgba(100, 100, 100, 1.0);
     text-align          : left;
     line-height         : 48.0px;
@@ -103,12 +103,12 @@
     width               : auto;
     position            : absolute;
     margin              : 0;
-    left                : 32px;
+    left                : 3%;
     -ms-transform       : rotate(0deg); /* IE 9 */
     -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
     transform           : rotate(0deg);
     font-family         : "FontAwesome5FreeSolid", Helvetica, Arial, serif;
-    font-size           : 48.0px;
+    font-size           : 4vw;
     color               : rgba(100, 100, 100, 1.0);
     text-align          : left;
     line-height         : 48.0px;

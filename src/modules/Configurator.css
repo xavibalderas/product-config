@@ -6,32 +6,32 @@
 }
 .Configurator .title {
     background-color    : rgba(255, 255, 255, 0.0);
-    top                 : 55%;
+    top                 : 51%;
     height              : auto;
     width               : auto;
     position            : absolute;
     margin              : 0;
-    left                : 15%;
+    left                : 13%;
     -ms-transform       : rotate(0deg); /* IE 9 */
     -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
     transform           : rotate(0deg);
     font-family         : "Noto Sans", Helvetica, Arial, serif;
     font-weight         : 700;
     font-style          : normal;
-    font-size           : 32.0px;
+    font-size           : 2vw;
     color               : rgba(51, 51, 51, 1.0);
     text-align          : left;
-    line-height         : 49.0px;
+    line-height         : 50.0px;
   }
 
   .Configurator .titleline {
     background-color    : rgba(255, 255, 255, 0.0);
-    top                 : 61%;
-    height              : 7px;
-    width               : 360px;
+    top                 : 57%;
+    height              : 0.75%;
+    width               : 23%;
     position            : absolute;
     margin              : 0;
-    left                : 15%;
+    left                : 13%;
     -ms-transform       : rotate(0deg); /* IE 9 */
     -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
     transform           : rotate(0deg);
@@ -39,17 +39,17 @@
 
   .Configurator .wrenchicon {
     background-color    : rgba(255, 255, 255, 0.0);
-    top                 : 56%;
+    top                 : 52%;
     height              : auto;
     width               : auto;
     position            : absolute;
     margin              : 0;
-    left                : 129px;
+    left                : 9%;
     -ms-transform       : rotate(0deg); /* IE 9 */
     -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
     transform           : rotate(0deg);
     font-family         : "FontAwesome5FreeSolid", Helvetica, Arial, serif;
-    font-size           : 48.0px;
+    font-size           : 3vw;
     color               : rgba(100, 100, 100, 1.0);
     text-align          : left;
     line-height         : 48.0px;
@@ -57,38 +57,38 @@
 
   .Configurator .droplabel1 {
     background-color    : rgba(255, 255, 255, 0.0);
-    top                 : 64%;
+    top                 : 60%;
     height              : auto;
     width               : auto;
     position            : absolute;
-    margin              : 0;
-    left                : 132px;
+    margin              : 0.1%;
+    left                : 9%;
     -ms-transform       : rotate(0deg); /* IE 9 */
     -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
     transform           : rotate(0deg);
     font-family         : "Noto Sans", Helvetica, Arial, serif;
     font-weight         : 400;
     font-style          : normal;
-    font-size           : 24.0px;
+    font-size           : 1.85vw;
     color               : rgba(0, 0, 0, 1.0);
     text-align          : left;
     line-height         : 33.0px;
   }
   .Configurator .droplabel2 {
     background-color    : rgba(255, 255, 255, 0.0);
-    top                 : 64%;
+    top                 : 60%;
     height              : auto;
     width               : auto;
     position            : absolute;
     margin              : 0;
-    left                : 436px;
+    left                : 30%;
     -ms-transform       : rotate(0deg); /* IE 9 */
     -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
     transform           : rotate(0deg);
     font-family         : "Noto Sans", Helvetica, Arial, serif;
     font-weight         : 400;
     font-style          : normal;
-    font-size           : 24.0px;
+    font-size           : 1.85vw;
     color               : rgba(0, 0, 0, 1.0);
     text-align          : left;
     line-height         : 33.0px;
@@ -96,19 +96,19 @@
 
   .Configurator .droplabel3 {
     background-color    : rgba(255, 255, 255, 0.0);
-    top                 : 64%;
+    top                 : 60%;
     height              : auto;
     width               : auto;
     position            : absolute;
     margin              : 0;
-    left                : 658px;
+    left                : 45%;
     -ms-transform       : rotate(0deg); /* IE 9 */
     -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
     transform           : rotate(0deg);
     font-family         : "Noto Sans", Helvetica, Arial, serif;
     font-weight         : 400;
     font-style          : normal;
-    font-size           : 24.0px;
+    font-size           : 1.85vw;
     color               : rgba(0, 0, 0, 1.0);
     text-align          : left;
     line-height         : 33.0px;
@@ -116,19 +116,19 @@
 
   .Configurator .droplabel4 {
     background-color    : rgba(255, 255, 255, 0.0);
-    top                 : 64%;
+    top                 : 60%;
     height              : auto;
     width               : auto;
     position            : absolute;
     margin              : 0;
-    left                : 881px;
+    left                : 62%;
     -ms-transform       : rotate(0deg); /* IE 9 */
     -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
     transform           : rotate(0deg);
     font-family         : "Noto Sans", Helvetica, Arial, serif;
     font-weight         : 400;
     font-style          : normal;
-    font-size           : 24.0px;
+    font-size           : 1.85vw;
     color               : rgba(0, 0, 0, 1.0);
     text-align          : left;
     line-height         : 33.0px;
@@ -136,19 +136,19 @@
 
   .Configurator .sizedrop {
     background-color    : rgba(255, 255, 255, 0.0);
-    top                 : 68%;
+    top                 : 64%;
     height              : auto;
     width               : auto;
     position            : absolute;
-    margin              : 0;
-    left                : 130px;
+    margin              : 0.1%;
+    left                : 9%;
     -ms-transform       : rotate(0deg); /* IE 9 */
     -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
     transform           : rotate(0deg);
     font-family         : "Noto Sans", Helvetica, Arial, serif;
     font-weight         : 400;
     font-style          : normal;
-    font-size           : 28.0px;
+    font-size           : 2.1vw;
     color               : rgba(51, 51, 51, 1.0);
     text-align          : left;
     line-height         : 49.0px;
@@ -157,19 +157,19 @@
 
   .Configurator .colordrop {
     background-color    : rgba(255, 255, 255, 0.0);
-    top                 : 68%;
+    top                 : 64%;
     height              : auto;
     width               : auto;
     position            : absolute;
-    margin              : 0;
-    left                : 436px;
+    margin              : 0.1%;
+    left                : 30%;
     -ms-transform       : rotate(0deg); /* IE 9 */
     -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
     transform           : rotate(0deg);
     font-family         : "Noto Sans", Helvetica, Arial, serif;
     font-weight         : 400;
     font-style          : normal;
-    font-size           : 28.0px;
+    font-size           : 2.1vw;
     color               : rgba(51, 51, 51, 1.0);
     text-align          : left;
     line-height         : 49.0px;
@@ -177,19 +177,19 @@
   }
   .Configurator .slattdrop {
     background-color    : rgba(255, 255, 255, 0.0);
-    top                 : 68%;
+    top                 : 64%;
     height              : auto;
     width               : auto;
     position            : absolute;
-    margin              : 0;
-    left                : 658px;
+    margin              : 0.1%;
+    left                : 45%;
     -ms-transform       : rotate(0deg); /* IE 9 */
     -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
     transform           : rotate(0deg);
     font-family         : "Noto Sans", Helvetica, Arial, serif;
     font-weight         : 400;
     font-style          : normal;
-    font-size           : 28.0px;
+    font-size           : 2.1vw;
     color               : rgba(51, 51, 51, 1.0);
     text-align          : left;
     line-height         : 49.0px;
@@ -197,19 +197,19 @@
   }
   .Configurator .matressdrop {
     background-color    : rgba(255, 255, 255, 0.0);
-    top                 : 68%;
+    top                 : 64%;
     height              : auto;
     width               : auto;
     position            : absolute;
-    margin              : 0;
-    left                : 881px;
+    margin              : 0.1%;
+    left                : 62%;
     -ms-transform       : rotate(0deg); /* IE 9 */
     -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
     transform           : rotate(0deg);
     font-family         : "Noto Sans", Helvetica, Arial, serif;
     font-weight         : 400;
     font-style          : normal;
-    font-size           : 28.0px;
+    font-size           : 2.1vw;
     color               : rgba(51, 51, 51, 1.0);
     text-align          : left;
     line-height         : 49.0px;
@@ -217,16 +217,14 @@
   }
 
 
-
-
   .Configurator .productimage {
     background-color    : rgba(255, 255, 255, 0.0);
-    top                 : 78%;
-    height              : 446px;
-    width               : 1293px;
+    top                 : 73%;
+    height              : 26%;
+    width               : 90.5%;
     position            : absolute;
-    margin              : 0;
-    left                : 124px;
+    margin              : 0.1%;
+    left                : 9%;
     overflow            : hidden;
     -ms-transform       : rotate(0deg); /* IE 9 */
     -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
@@ -235,12 +233,12 @@
 
   .Configurator .productimage .mask {
     background-color    : rgba(255, 255, 255, 0.0);
-    top                 : 0px;
-    height              : 446px;
-    width               : 1293px;
+    top                 : 25%;
+    height              : auto;
+    width               : 80%;
     position            : relative;
-    margin              : 0;
-    left                : 0px;
+    margin              : 1%;
+    left                : 0%;
     -ms-transform       : rotate(0deg); /* IE 9 */
     -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
     transform           : rotate(0deg);
@@ -248,12 +246,12 @@
 
   .Configurator .productimage .image {
     background-color    : rgba(255, 255, 255, 0.0);
-    top                 : -307px;
-    height              : 945px;
-    width               : 1364px;
+    top                 : -100%;
+    height              : auto;
+    width               : 85%;
     position            : absolute;
-    margin              : 0;
-    left                : -39px;
+    margin              : 1%;
+    left                : -4%;
     -ms-transform       : rotate(0deg); /* IE 9 */
     -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
     transform           : rotate(0deg);
