@@ -39,10 +39,10 @@
   .Rightpanel .delivery {
     background-color    : rgba(255, 255, 255, 0.0);
     top                 : 20%;
-    height              : 15%;
+    height              : 150px;
     width               : auto;
     position            : absolute;
-    margin              : 0;
+    margin              : 0.1%;
     left                : 74%;
     -ms-transform       : rotate(0deg); /* IE 9 */
     -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
@@ -54,7 +54,7 @@
     height              : 50%;
     width               : 100%;
     position            : relative;
-    margin              : 0%;
+    margin              : 0.1%;
     left                : 0%;
     -ms-transform       : rotate(0deg); /* IE 9 */
     -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
