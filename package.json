@@ -7,13 +7,16 @@
     "font-awesome": "^4.7.0",
     "react": "^16.4.1",
     "react-atmosphere-menu": "^0.5.4",
+    "react-bootstrap": "^0.32.1",
     "react-dom": "^16.4.1",
     "react-dropdown": "^1.5.0",
     "react-modal": "^3.5.1",
     "react-scripts": "1.1.4",
     "react-sidemenu": "0.0.14",
     "react-slide-menu": "^0.5.1",
-    "react-sliding-pane": "^2.0.2"
+    "react-sliding-pane": "^2.0.2",
+    "semantic-ui-css": "^2.3.3",
+    "semantic-ui-react": "^0.82.0"
   },
   "scripts": {
     "start": "react-scripts start",

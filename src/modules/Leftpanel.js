@@ -8,22 +8,22 @@ import '../../node_modules/font-awesome/css/font-awesome.min.css';
 
 const divStyle = {
         backgroundColor     : 'rgba(255, 255, 255, 0.0)',
-        top                 : '30px',
+        top                 : '4%',
         height              : 'auto',
-        width               : '350px',
+        width               : '90%',
         position            : 'absolute',
         margin              : '0',
-        left                : '31px',
+        left                : '5%',
         msTransform         : 'rotate(0deg)', /* IE 9 */
         WebkitTransition    : 'rotate(0deg)', /* Chrome, Safari, Opera */
         transform           : 'rotate(0deg)',
         fontFamily          : 'Noto Sans',
         fontWeight          : '400',
         fontStyle           : 'normal',
-        fontSize            : '24.0px',
+        fontSize            : '1.25vw',
         color               : 'rgba(0, 0, 0, 1.0)',
         textAlign           : 'left',
-        lineHeight          : '33.0px',
+        lineHeight          : '28.0px',
 
 };
 
@@ -48,7 +48,7 @@ class Leftpanel extends Component {
         return (
             <div className="Leftpanel">
                 
-                <button class= "btn1" onClick={ () => this.setState({ isINFOPaneOpen: true})}> <i className="fa fa-bars"></i>     
+                <button class= "btn1" onClick={ () => this.setState({ isINFOPaneOpen: true})}> <i class="fa fa-question-circle"></i>     
                 </button>
 
                 <SlidingPane className='infopanel'

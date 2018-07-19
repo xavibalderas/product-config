@@ -7,18 +7,18 @@
 
 .Leftpanel .btn1 {
     background-color    : rgba(255, 255, 255, 0.0);
-    top                 : 103px;
+    top                 : 5%;
     border              : none;
     height              : auto;
     width               : auto;
     position            : absolute;
     margin              : 0;
-    left                : 32px;
+    left                : 3%;
     -ms-transform       : rotate(0deg); /* IE 9 */
     -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
     transform           : rotate(0deg);
     font-family         : "FontAwesome5FreeSolid", Helvetica, Arial, serif;
-    font-size           : 48.0px;
+    font-size           : 4vw;
     color               : rgba(100, 100, 100, 1.0);
     text-align          : left;
     line-height         : 48.0px;
@@ -28,12 +28,11 @@
       background-color: darkgrey;
   }
 
-
   .Leftpanel .infopanel .productinfo {
         background-color    : rgba(255, 255, 255, 0.0);
-        top                 : 156px;
+        top                 : 20%;
         height              : auto;
-        width               : 400px;
+        width               : 200px;
         position            : absolute;
         margin              : 0;
         left                : 32px;
@@ -43,7 +42,7 @@
         font-family         : "Noto Sans", Helvetica, Arial, serif;
         font-weight         : 400;
         font-style          : normal;
-        font-size           : 24.0px;
+        font-size           : 18.0px;
         color               : rgba(0, 0, 0, 1.0);
         text-align          : left;
         line-height         : 33.0px;
@@ -55,18 +54,18 @@
 
   .Leftpanel .btn2 {
     background-color    : rgba(255, 255, 255, 0.0);
-    top                 : 197px;
+    top                 : 15%;
     border              : none;
     height              : auto;
     width               : auto;
     position            : absolute;
     margin              : 0;
-    left                : 32px;
+    left                : 3%;
     -ms-transform       : rotate(0deg); /* IE 9 */
     -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
     transform           : rotate(0deg);
     font-family         : "FontAwesome5FreeSolid", Helvetica, Arial, serif;
-    font-size           : 48.0px;
+    font-size           : 4vw;
     color               : rgba(100, 100, 100, 1.0);
     text-align          : left;
     line-height         : 48.0px;
@@ -97,18 +96,18 @@
 
 .Leftpanel .btn3 {
     background-color    : rgba(255, 255, 255, 0.0);
-    top                 : 283px;
+    top                 : 25%;
     height              : auto;
     border              : none;
     width               : auto;
     position            : absolute;
     margin              : 0;
-    left                : 32px;
+    left                : 3%;
     -ms-transform       : rotate(0deg); /* IE 9 */
     -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
     transform           : rotate(0deg);
     font-family         : "FontAwesome5FreeSolid", Helvetica, Arial, serif;
-    font-size           : 48.0px;
+    font-size           : 4vw;
     color               : rgba(100, 100, 100, 1.0);
     text-align          : left;
     line-height         : 48.0px;
