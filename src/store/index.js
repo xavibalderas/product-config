@@ -1,8 +1,9 @@
 import { createStore, combineReducers } from 'redux'
-import { settings } from './reducers'
+import { settings, data } from './reducers'
 
 const rootReducer = combineReducers({
-  settings
+  settings,
+  data
 })
 
 export default createStore(rootReducer)

@@ -2,31 +2,25 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { actions, TYPES } from '../store/actions';
 import LogInContainer from './Login.js';
-import SettingsButton from './SettingsButton.js';
+import SettingsButtonContainer from './SettingsButton.js';
+import { Loader} from 'semantic-ui-react'
+
 
 
 const mapStateToProps = (state) => ({
-  combination: state.settings.combination,
-  accessSetup: state.settings.accessSetup
+  accessSetup: state.settings.accessSetup,
+  isFetching: state.settings.isFetching
 });
 
-const ProductDisplay = ({combination, accessSetup, onAccessSetup}) => (
+const ProductDisplay = ({accessSetup, isFetching}) => (
 
             <div className="Header">
               <h2>Product display</h2>
-              {console.log(combination)}
-              <p>{combination.test}</p>
-              <button
-              onClick={() => onAccessSetup(true)}
-              >jjj</button>
-              { accessSetup ? <LogInContainer/> : <SettingsButton/>}
+              <p></p>
+              { accessSetup ? <LogInContainer/> : <SettingsButtonContainer/> }
+              { isFetching ? <Loader active/> : null }
             </div>
 );
-const mapDispatchToProps = dispatch => {
-  return {
-    onAccessSetup: bool => dispatch(actions.accessSetup(bool))
-  }
-}
 
- const  ProductDisplayList =  connect(mapStateToProps, mapDispatchToProps)(ProductDisplay);
+ const  ProductDisplayList =  connect(mapStateToProps)(ProductDisplay);
  export default ProductDisplayList
