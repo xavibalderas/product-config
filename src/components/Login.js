@@ -1,29 +1,24 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { actions, TYPES } from '../store/actions';
 
-class Login extends React.Component{
-  state = {
-    redirectToReferrer: false
-  };
 
-  login = () => {
-    auth.authenticate(() => {
-      this.setState({ redirectToReferrer: true });
-    });
-  };
+const mapStateToProps = (state) => ({
+  loggedIn: state.settings.loggedIn
+});
 
-  render() {
-    const { from } = this.props.location.state|| { from: { pathname: "/" } };
-    const { redirectToReferrer } = this.state;
 
-    if (redirectToReferrer) {
-      return <Redirect to={from} />;
-    }
-    return (
-      <div>
-        <button onClick={this.login}>Log in</button>
-      </div>
-    );
+const LogIn = ({loggedIn, onLogIn}) => (
+  <div>
+    <button onClick={()=>onLogIn(true)}>Log in</button>
+  </div>
+);
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onLogIn: bool => dispatch(actions.logInOut(bool))
   }
 }
 
-export default Login
+const  LogInContainer =  connect(mapStateToProps, mapDispatchToProps)(LogIn);
+export default LogInContainer

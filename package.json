@@ -17,6 +17,7 @@
     "react-sidemenu": "0.0.14",
     "react-slide-menu": "^0.5.1",
     "react-sliding-pane": "^2.0.2",
+    "redux": "^4.0.0",
     "semantic-ui-css": "^2.3.3",
     "semantic-ui-react": "^0.82.0"
   },
