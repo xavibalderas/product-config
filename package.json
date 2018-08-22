@@ -5,6 +5,7 @@
   "dependencies": {
     "ajv": "^6.5.2",
     "font-awesome": "^4.7.0",
+    "npm": "^6.4.0",
     "react": "^16.4.1",
     "react-atmosphere-menu": "^0.5.4",
     "react-bootstrap": "^0.32.1",
