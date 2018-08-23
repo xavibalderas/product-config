@@ -17,8 +17,9 @@ class RootContainer extends Component{
   componentDidMount(){
     this.props.isFetchingSettings(true);
     const products = localStorage.getItem('products');
+    console.log(products);
     if (products){
-      this.props.configLoaded(products);
+      this.props.configLoaded(JSON.parse(products));
     }
     this.props.isFetchingSettings(false);
   }

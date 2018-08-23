@@ -32,6 +32,11 @@ export const settings = (state = initialStates.settings, action) => {
         products: action.products
       });
 
+      case TYPES.SAVE_CONFIG:
+      return Object.assign({}, state, {
+        products: action.products
+      });
+
     default:
       return state
   }

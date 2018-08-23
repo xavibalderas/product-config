@@ -1,9 +1,10 @@
 import { createStore, combineReducers } from 'redux'
 import { settings, data } from './reducers'
 
-const rootReducer = combineReducers({
+const reducers = {
   settings,
-  data
-})
+  data,
+}
+const rootReducer = combineReducers(reducers)
 
 export default createStore(rootReducer)
