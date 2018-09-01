@@ -7,25 +7,25 @@ import { Input, Form , Header, Button, Icon, Table} from 'semantic-ui-react'
 class Settings extends Component {
   constructor(props){
     super(props);
-    this.combinations = props.combinations;
+    this.products = props.products;
     this.state = {
-      combinations: props.combinations
+      products: props.products
     }
   }
   save() {
-    console.log(this.combinations);
+    console.log(this.products);
     console.log("Vamos a guardar");
-    this.props.saveConfig(this.state.combinations);
-    localStorage.setItem('products', JSON.stringify(this.state.combinations));
+    this.props.saveConfig(this.state.products);
+    localStorage.setItem('products', JSON.stringify(this.state.products));
 
   }
 
   handleChange = (e, data) => {
-    const pro = this.state.combinations.slice();
+    const pro = this.state.products.slice();
       if (typeof pro[data.data_index] !== undefined ) {
         pro[data.data_index][data.name] = data.value;
         this.setState({
-          combinations: pro
+          products: pro
         })
       }
       console.log(pro);
@@ -34,7 +34,7 @@ class Settings extends Component {
 
   addCombination = () =>{
     this.setState({
-      combinations: this.state.combinations.concat([
+      products: this.state.products.concat([
         {
           bed:'',
           mattress: '',
@@ -49,11 +49,11 @@ class Settings extends Component {
   }
 
   removeCombination = (name) => {
-    const pro = this.state.combinations.slice();
+    const pro = this.state.products.slice();
       if (typeof pro[name] !== undefined ) {
         pro.splice(name,1);
         this.setState({
-          combinations: pro
+          products: pro
         })
       }
   }
@@ -75,7 +75,7 @@ class Settings extends Component {
             </Table.Row>
           </Table.Header>
           <Table.Body>
-            {this.state.combinations.map((combination, index)=>{
+            {this.state.products.map((combination, index)=>{
               return (
                 <Table.Row key = {index}>
                   <Table.Cell>
@@ -164,15 +164,38 @@ class Settings extends Component {
           </Table.Footer>
 
         </Table>
+        <Form>
+            <Header as="h3">
+              Bed Structure references
+            </Header>
+            {this.state.products.map((product, index)=>{
+              return (
+              <Form.Group key = {index} widths = '3'>
+                <Form.Input
+                name = {index}
+                onChange = {this.handleChange}
+                placeholder = {product}
+                value = {product}/>
+
+                <Button icon onClick={() => this.removeCombination(index)}>
+                  <Icon name='minus' />
+                </Button>
+              </Form.Group>
+              )
+            })}
+            <Button icon onClick={() => this.addCombination()}>
+              <Icon name='plus' />
+            </Button>
         <Form.Button onClick={() => this.save()}>Save</Form.Button>
           <Form.Button onClick={() => this.props.onLogOut()}>Log out</Form.Button>
+        </Form>
       </div>
     )
   }
 }
 
 const mapStateToProps = state => ({
-    combinations: state.settings.combinations
+    products: state.settings.products
 });
 
 const mapDispatchToProps = dispatch => {
@@ -181,10 +204,10 @@ const mapDispatchToProps = dispatch => {
       dispatch(actions.logInOut(false));
       dispatch(actions.accessSetup(false))
     },
-    saveConfig: (combinations) => {
+    saveConfig: (products) => {
       console.log("Guardo");
-      console.log(combinations);
-      dispatch(actions.saveConfig(combinations))
+      console.log(products);
+      dispatch(actions.saveConfig(products))
     }
   }
 }

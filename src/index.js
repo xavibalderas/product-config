@@ -2,12 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import registerServiceWorker from './registerServiceWorker';
 import 'semantic-ui-css/semantic.min.css';
+import { Provider } from 'react-redux';
+import store from './store';
+import { ApolloProvider } from "react-apollo";
+import ApolloClient from "apollo-boost";
 
-ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
-
-if (module.hot) {
-    module.hot.accept();
-}
+const client = new ApolloClient({
+  //  uri: "https://graphqlserver-productsinfo.herokuapp.com/"
+      uri: 'http://localhost:65238/'
+})
+ReactDOM.render(
+  <ApolloProvider client={client}>
+    <Provider store={store}>
+    <App />
+    </Provider>
+  </ApolloProvider>
+    , document.getElementById('root'));
