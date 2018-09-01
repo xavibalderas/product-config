@@ -29,7 +29,7 @@ class RootContainer extends Component{
   }
   render(){
     return (
-      <Container>
+      <Container fluid>
         { this.props.loggedIn ? <SettingsContainer/> : <ProductDisplayList/>}
       </Container>
     )

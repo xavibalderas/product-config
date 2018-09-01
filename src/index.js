@@ -7,10 +7,11 @@ import { Provider } from 'react-redux';
 import store from './store';
 import { ApolloProvider } from "react-apollo";
 import ApolloClient from "apollo-boost";
+import './semantic/dist/semantic.min.css';
 
 const client = new ApolloClient({
   //  uri: "https://graphqlserver-productsinfo.herokuapp.com/"
-      uri: 'http://localhost:65238/'
+      uri: 'http://localhost:50042/'
 })
 ReactDOM.render(
   <ApolloProvider client={client}>

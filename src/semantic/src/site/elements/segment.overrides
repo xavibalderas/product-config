@@ -1,0 +1,9 @@
+/*******************************
+         Site Overrides
+*******************************/
+.ui.vertical.segment {
+
+
+  background: white;
+
+}

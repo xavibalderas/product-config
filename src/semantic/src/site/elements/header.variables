@@ -1,0 +1,5 @@
+/*******************************
+    User Variable Overrides
+*******************************/
+@h2SubHeaderFontSize: @fontSize;
+@subHeaderColor: @textColor;
