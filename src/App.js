@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Configurator from './components/Configurator';
 import SettingsContainer from './components/Settings';
-import ProductDisplayList from './components/ProductDisplay';
+import DisplayContainer from './components/Display';
 import { connect } from 'react-redux';
 import { actions } from './store/actions';
 import { Container } from 'semantic-ui-react'
@@ -18,8 +18,7 @@ class RootContainer extends Component{
     const combinations = localStorage.getItem('products');
     if (combinations){
       const v_products = JSON.parse(combinations);
-      if (v_products.length > 0){
-        console.log(v_products);
+      if (v_products.length > 0){        
         this.props.configLoaded(v_products);
         this.props.itemsLoaded(v_products);
       }
@@ -30,7 +29,7 @@ class RootContainer extends Component{
   render(){
     return (
       <Container fluid>
-        { this.props.loggedIn ? <SettingsContainer/> : <ProductDisplayList/>}
+        { this.props.loggedIn ? <SettingsContainer/> : <DisplayContainer/>}
       </Container>
     )
   }

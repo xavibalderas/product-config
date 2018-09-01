@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { actions, TYPES } from '../store/actions';
-import { Input, Form , Header, Button, Icon, Table} from 'semantic-ui-react'
+import { Input, Form ,Radio,  Header, Button, Icon, Table, Grid} from 'semantic-ui-react'
 
 
 class Settings extends Component {
@@ -60,11 +60,15 @@ class Settings extends Component {
 
   render() {
     return(
-      <div className="Header">
+      <div >
+      <Grid>
+        <Grid.Row>
+        <Grid.Column width={16}>
         <h2>Configuration</h2>
-        <Table compact celled>
+        <Table compact celled size="small" basic='very' collapsing>
           <Table.Header>
             <Table.Row>
+              <Table.HeaderCell>Default</Table.HeaderCell>
               <Table.HeaderCell>Bed</Table.HeaderCell>
               <Table.HeaderCell>Mattress</Table.HeaderCell>
               <Table.HeaderCell>Qty</Table.HeaderCell>
@@ -78,17 +82,25 @@ class Settings extends Component {
             {this.state.combinations.map((combination, index)=>{
               return (
                 <Table.Row key = {index}>
-                  <Table.Cell>
+                <Table.Cell collapsing>
+                <Radio
+                           toggle
+                           name='defaultCombination'
+                           value='this'
+                  />
+                </Table.Cell>
+                  <Table.Cell collapsing>
                     <Input
                     name = 'bed'
                     data_index = {index}
                     onChange = {this.handleChange}
                     placeholder = {combination.bed}
                     value = {combination.bed}
+
                     />
                   </Table.Cell>
 
-                  <Table.Cell>
+                  <Table.Cell collapsing>
                     <Input
                     name = 'mattress'
                     data_index = {index}
@@ -98,7 +110,7 @@ class Settings extends Component {
                     />
                   </Table.Cell>
 
-                  <Table.Cell>
+                  <Table.Cell collapsing>
                   <Input
                   name = 'mattress_qty'
                   data_index = {index}
@@ -108,7 +120,7 @@ class Settings extends Component {
                   />
                   </Table.Cell>
 
-                  <Table.Cell>
+                  <Table.Cell collapsing>
                   <Input
                   name = 'slat'
                   data_index = {index}
@@ -118,7 +130,7 @@ class Settings extends Component {
                   />
                   </Table.Cell>
 
-                  <Table.Cell>
+                  <Table.Cell collapsing>
                   <Input
                   name = 'slat_qty'
                   data_index = {index}
@@ -128,7 +140,7 @@ class Settings extends Component {
                   />
                   </Table.Cell>
 
-                  <Table.Cell>
+                  <Table.Cell collapsing>
                   <Input
                   name = 'extra'
                   data_index = {index}
@@ -138,7 +150,7 @@ class Settings extends Component {
                   />
                   </Table.Cell>
 
-                  <Table.Cell>
+                  <Table.Cell collapsing>
                   <Input
                   name = 'extra_qty'
                   data_index = {index}
@@ -149,6 +161,7 @@ class Settings extends Component {
                   </Table.Cell>
 
                 </Table.Row>
+
               )
 
             })}
@@ -166,6 +179,9 @@ class Settings extends Component {
         </Table>
         <Form.Button onClick={() => this.save()}>Save</Form.Button>
           <Form.Button onClick={() => this.props.onLogOut()}>Log out</Form.Button>
+          </Grid.Column>
+          </Grid.Row>
+          </Grid>
       </div>
     )
   }

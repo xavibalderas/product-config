@@ -18,17 +18,17 @@ class ProductInfo extends Component {
             <Grid.Column width={1}>
               <MenuContainer/>
             </Grid.Column>
-            <Grid.Column width={11}>
+            <Grid.Column width={15}>
             <Grid>
 
             <Grid.Row>
-              <Grid.Column width={14}>
+              <Grid.Column width={11}>
               <Segment basic>
               <Header as="h2">
   <Header.Subheader>{this.props.products[this.props.combinations[0].bed].ProductTypeName}, {this.props.products[this.props.combinations[0].bed].ValidDesignText}</Header.Subheader>
                 {this.props.products[this.props.combinations[0].bed].ProductName}
               </Header>
-              <h1>CHF{this.props.products[this.props.combinations[0].bed].RetailItemCommPriceList.RetailItemCommPrice.Price}</h1>
+              <h1 className="product_price">CHF{this.props.products[this.props.combinations[0].bed].RetailItemCommPriceList.RetailItemCommPrice.Price}</h1>
               <p>{this.props.products[this.props.combinations[0].bed].RetailItemCustomerBenefitSummaryText}</p>
 
               <p>{this.props.products[this.props.combinations[0].mattress].ProductName}</p>
@@ -36,9 +36,11 @@ class ProductInfo extends Component {
               <p>{this.props.products[this.props.combinations[0].extra].ProductName}</p>
 </Segment>
               </Grid.Column>
-              <Grid.Column  width={2}>
-              <Segment basic>
-                <p>hfhf</p>
+              <Grid.Column  width={5}>
+              <Segment basic color='blue'>
+                <Header as="h5">
+                  You can do it yourself, but you don't have to
+                </Header>
                 </Segment>
               </Grid.Column>
               </Grid.Row>

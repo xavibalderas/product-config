@@ -7,6 +7,7 @@ import { Loader} from 'semantic-ui-react'
 import gql from 'graphql-tag';
 import { Query } from "react-apollo";
 import ProductInfo from './ProductInfo';
+import queryReducer from '../tools/queryReducer';
 
 
 const mapStateToProps = (state) => ({
@@ -91,7 +92,7 @@ const mapProducts = (productsInfo) => {
   return result;
 }
 
-class ProductDisplay extends Component {
+class Display extends Component {
   constructor(props){
     super(props);
     this.productsInfo = {}
@@ -110,9 +111,10 @@ render() {
 
         {({ loading, error, data }) => {
           if (loading) return <p></p>;
-          if (error) {console.log(error); return <p>Error :</p>;}
+          if (error) {console.log(error); return <p> Error :</p> ;}
           if(data.products[0]==null) return <p>Error</p>
           //filtersReduce(data.products);
+          queryReducer.reduce(data);
           this.productsInfo = mapProducts(data.products);
           return (
             <ProductInfo combinations = {this.props.combinations} products = {this.productsInfo}/>
@@ -123,5 +125,5 @@ render() {
 }
 };
 
- const  ProductDisplayList =  connect(mapStateToProps)(ProductDisplay);
- export default ProductDisplayList
+ const  DisplayContainer =  connect(mapStateToProps)(Display);
+ export default DisplayContainer
