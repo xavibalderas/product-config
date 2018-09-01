@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { actions, TYPES } from '../store/actions';
 import { Input, Form ,Radio,  Header, Button, Icon, Table, Grid} from 'semantic-ui-react'
 
-
+//Comentario de rpueba
 class Settings extends Component {
   constructor(props){
     super(props);
