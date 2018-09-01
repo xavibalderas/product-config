@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-import Header from './components/Header';
 import Configurator from './components/Configurator';
 import SettingsContainer from './components/Settings';
 import ProductDisplayList from './components/ProductDisplay';
@@ -16,10 +15,15 @@ class RootContainer extends Component{
   }
   componentDidMount(){
     this.props.isFetchingSettings(true);
-    const products = localStorage.getItem('products');
-    console.log(products);
-    if (products){
-      this.props.configLoaded(JSON.parse(products));
+    const combinations = localStorage.getItem('products');
+    if (combinations){
+      const v_products = JSON.parse(combinations);
+      if (v_products.length > 0){
+        console.log(v_products);
+        this.props.configLoaded(v_products);
+        this.props.itemsLoaded(v_products);
+      }
+
     }
     this.props.isFetchingSettings(false);
   }
@@ -39,7 +43,8 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = dispatch => {
   return {
     isFetchingSettings: (bool) => dispatch(actions.loadingConfig(bool)),
-    configLoaded: (products) => dispatch(actions.configLoaded(products))
+    configLoaded: (combinations) => dispatch(actions.configLoaded(combinations)),
+    itemsLoaded: (combinations) => dispatch(actions.itemsLoaded(combinations))
   }
 }
 

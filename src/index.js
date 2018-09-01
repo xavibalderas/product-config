@@ -9,7 +9,8 @@ import { ApolloProvider } from "react-apollo";
 import ApolloClient from "apollo-boost";
 
 const client = new ApolloClient({
-    uri: "https://graphqlserver-productsinfo.herokuapp.com/"
+  //  uri: "https://graphqlserver-productsinfo.herokuapp.com/"
+      uri: 'http://localhost:65238/'
 })
 ReactDOM.render(
   <ApolloProvider client={client}>

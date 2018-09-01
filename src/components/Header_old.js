@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import './Header.css'
 
 class Header extends Component {
+
+    constructor(props){
+      super(props);
+    }
+
     render() {
         return (
             <div className="Header">
@@ -11,7 +16,7 @@ class Header extends Component {
                 </div>
 
                 <div className="productname">
-                    TARVA
+                    {this.props.product[0].ProductName}
                 </div>
 
                 <div className="price">
@@ -40,7 +45,7 @@ class Header extends Component {
 
             </div>
         );
-    }   
+    }
 }
 
 export default Header

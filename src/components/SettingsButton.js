@@ -5,11 +5,9 @@ import { Button } from 'semantic-ui-react'
 
 const SettingsButton = ({onAccessSetup}) => (
   <div>
-    <h4>Settings Button</h4>
     <Button
     onClick={() => onAccessSetup(true)}
     >Log In</Button>
-
   </div>
 );
 

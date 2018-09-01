@@ -6,7 +6,8 @@ export const TYPES = {
   REQUEST_PRODUCTS: 'REQUEST_PRODUCTS',
   RECEIVE_PRODUCTS: 'RECEIVE_PRODUCTS',
   LOADING_CONFIG: 'LOAD_CONFIG',
-  CONFIG_LOADED: 'CONFIG_LOADED'
+  CONFIG_LOADED: 'CONFIG_LOADED',
+  ITEMS_LOADED: 'ITEMS_LOADED'
 }
 
 export const actions = {
@@ -17,5 +18,6 @@ export const actions = {
   requestProducts: (products) => ({ type: TYPES.REQUEST_PRODUCTS, products }),
   receiveProducts: (productsInfo) => ({ type: TYPES.RECEIVE_PRODUCTS, productsInfo }),
   loadingConfig: (bool) => ({ type: TYPES.LOADING_CONFIG, bool }),
-  configLoaded: (products) => ({ type: TYPES.CONFIG_LOADED, products })
+  configLoaded: (combinations) => ({ type: TYPES.CONFIG_LOADED, combinations }),
+  itemsLoaded: (combinations) => ({ type: TYPES.ITEMS_LOADED, combinations })
 }
