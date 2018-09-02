@@ -36,7 +36,7 @@ class CarrierDisplay extends Component {
               <Grid.Column  width={5}>
               <Segment basic color='blue'>
                 <Header as="h5">
-                  You can do it yourself, but you don't have to
+                Du kannst alles selber machen, du musst aber nicht
                 </Header>
                 <Item.Group>
                       <Item>
