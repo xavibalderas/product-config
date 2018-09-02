@@ -115,7 +115,7 @@ render() {
     { this.props.isFetching ? <Loader active/> : null }
     <Query
       query={GET_INFO_PRODUCT}
-      variables={{productList: this.props.items, lang: 'en'}} >
+      variables={{productList: this.props.items, lang: 'de'}} >
 
         {({ loading, error, data }) => {
           if (loading) return <p></p>;

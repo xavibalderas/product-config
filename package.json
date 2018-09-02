@@ -6,6 +6,7 @@
     "ajv": "^6.5.3",
     "apollo-boost": "^0.1.15",
     "font-awesome": "^4.7.0",
+    "format-string-by-pattern": "^1.0.0",
     "graphql": "^0.13.2",
     "graphql-tag": "^2.9.2",
     "npm": "^6.4.1",

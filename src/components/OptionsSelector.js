@@ -1,10 +1,44 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {Segment, Header, List} from 'semantic-ui-react'
+import {Segment, Header, Card} from 'semantic-ui-react';
+import { actions } from '../store/actions';
 
-const SelectedCombination = ({combination, products}) => (
-<div></div>
-);
+
+class CardCombination extends Component {
+
+  handleCardClick = (e, {name}) => {
+      this.props.selectCombination(name);
+  }
+  render() {
+    return (
+      <Card
+      link
+      onClick = {this.handleCardClick}
+      name={this.props.index}>
+        <Card.Content>
+        <Card.Header>{this.props.products[this.props.combination.bed].ProductName}</Card.Header>
+        <Card.Description>
+          {this.props.products[this.props.combination.bed].ValidDesignText}, {this.props.products[this.props.combination.bed].ItemMeasureReferenceTextMetric}
+        </Card.Description>
+        </Card.Content>
+      </Card>
+    );
+  }
+
+}
+
+/*
+<SelectedCombination combination = {combinations[selectedCombination]} products = {products}/>
+*/
+const mapDispatchToProps = dispatch => {
+  return {
+    selectCombination: (combination) => {
+      dispatch(actions.selectCombination(combination));
+    }
+  }
+}
+
+const  CardCombinationRoot =  connect(null, mapDispatchToProps)(CardCombination);
 
 
 const mapStateToProps = (state) => ({
@@ -14,8 +48,16 @@ const mapStateToProps = (state) => ({
 });
 
 const RootOptionsSelector = ({combinations, items, selectedCombination, products }) => (
-  <Segment basic olor='blue'>
-    <SelectedCombination combination = {combinations[selectedCombination]} products = {products}/>
+  <Segment basic color='yellow'>
+    <Header as="h5">
+      Other available options
+    </Header>
+    <Card.Group itemsPerRow={4}>
+      {combinations.map((element, index) => {
+        return index !== selectedCombination ? <CardCombinationRoot key={index} combination={element} index={index} products={products}/> : null
+      })}
+    </Card.Group>
+
   </Segment>
 );
 

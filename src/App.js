@@ -18,6 +18,7 @@ class RootContainer extends Component{
       if (v_products.length > 0){
         this.props.configLoaded(v_products);
         this.props.itemsLoaded(v_products);
+        this.props.selectCombination(0);
       }
 
     }
@@ -40,7 +41,9 @@ const mapDispatchToProps = dispatch => {
   return {
     isFetchingSettings: (bool) => dispatch(actions.loadingConfig(bool)),
     configLoaded: (combinations) => dispatch(actions.configLoaded(combinations)),
-    itemsLoaded: (combinations) => dispatch(actions.itemsLoaded(combinations))
+    itemsLoaded: (combinations) => dispatch(actions.itemsLoaded(combinations)),
+    selectCombination: (combination) => {dispatch(actions.selectCombination(combination))
+    }
   }
 }
 

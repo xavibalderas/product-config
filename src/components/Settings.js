@@ -12,9 +12,8 @@ class Settings extends Component {
     }
   }
   save() {
-    console.log(this.combinations);
-    console.log("Vamos a guardar");
     this.props.saveConfig(this.state.combinations);
+    this.props.selectCombination(0);
     localStorage.setItem('products', JSON.stringify(this.state.combinations));
 
   }
@@ -197,9 +196,12 @@ const mapDispatchToProps = dispatch => {
       dispatch(actions.accessSetup(false))
     },
     saveConfig: (combinations) => {
-      console.log("Guardo");
-      console.log(combinations);
-      dispatch(actions.saveConfig(combinations))
+      dispatch(actions.saveConfig(combinations));
+      dispatch(actions.configLoaded(combinations));
+      dispatch(actions.itemsLoaded(combinations));
+    },
+    selectCombination: (combination) => {
+      dispatch(actions.selectCombination(combination));
     }
   }
 }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Menu, Sidebar,Button,  Segment, Icon, List} from 'semantic-ui-react';
+import { Menu, Sidebar,Button,  Segment, Icon, List, Item} from 'semantic-ui-react';
 import gql from 'graphql-tag';
 import { Query } from "react-apollo";
 import AvailabilityDisplay from './AvailabilityDisplay'
@@ -43,11 +43,8 @@ const _productsItemNumber = (combination) => {
 
 class MenuContainer  extends Component {
   state = { info: false, stock: false, email: false }
-
   handleItemClick = (e, {name}) => {
-    console.log(name);
     this.setState({[name]: true })
-    console.log("fdsfsfdsfsdf");
   }
 hideSidebar= ()=>{
   this.setState({ info: false, stock: false, email: false });
@@ -67,12 +64,12 @@ hideSidebar= ()=>{
           <Menu.Item name='stock' onClick={this.handleItemClick}>
             <Icon color={'grey'} size={'large'} name='shop' />
           </Menu.Item>
-          <Menu.Item name='email' >
+        {/*  <Menu.Item name='email' >
             <Icon color={'grey'} size={'large'} name='envelope' />
           </Menu.Item>
           <Menu.Item name='info' >
             <Icon color={'grey'} size={'large'} name='language' />
-          </Menu.Item>
+          </Menu.Item> */}
         </Menu>
         <Sidebar
           as={Segment}
@@ -81,7 +78,7 @@ hideSidebar= ()=>{
           width='wide'
           visible={v.info}
         >
-        <Button attached='top' icon onClick={this.hideSidebar}>
+        <Button className="close-button" attached='top' compact circular icon onClick={this.hideSidebar}>
           <Icon color={'grey'} size={'large'} name='close' />
           </Button>
         <Segment basic clearing>
@@ -104,7 +101,7 @@ hideSidebar= ()=>{
         <Query
           query={GET_AVAILABILITY_PRODUCT}
           variables={{productList: _productsItemNumber(this.props.combination), lang: 'de', store: '079'}}
-          skip={v.stock==false}>
+          skip={v.stock===false}>
 
             {({ loading, error, data }) => {
               if (loading) return <p></p>;
@@ -112,9 +109,9 @@ hideSidebar= ()=>{
               if(data.availability[0]==null) return <p>Error</p>
               return (
                 <Segment basic clearing>
-                <List divided relaxed='very'>
+                <Item.Group>
                   {data.availability.map((element, index)=> <AvailabilityDisplay key={index} product={element} productInfo = {this.props.products[element.partNumber]}/>)}
-                </List>
+                </Item.Group>
                 </Segment>
               );
               //return (<Availability products = {data.availability}/>); //return

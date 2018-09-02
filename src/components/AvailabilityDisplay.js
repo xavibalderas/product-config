@@ -1,11 +1,12 @@
 import React from 'react';
-import {List, Table} from 'semantic-ui-react';
+import { Table, Item} from 'semantic-ui-react';
+import formatStringByPattern from 'format-string-by-pattern';
 
 
 const SelfServe = ({findIt}) => (
-  <Table singleLine basic='very'>
+  <Table compact='very' size='small' singleLine basic='very'>
   <Table.Header>
-   <Table.Row>
+   <Table.Row verticalAlign="bottom">
      <Table.HeaderCell>Row</Table.HeaderCell>
      <Table.HeaderCell>Cell</Table.HeaderCell>
    </Table.Row>
@@ -21,15 +22,17 @@ const SelfServe = ({findIt}) => (
 
 
 const AvailabilityDisplay = ({product, productInfo}) => (
-<List.Item>
-  <List.Content>
-    <List.Header>{productInfo.ProductName}</List.Header>
-    <List.Description>
-      {product.findItList.findIt.type === 'BOX_SHELF' ? <SelfServe findIt={product.findItList.findIt}/> : null}
-    </List.Description>
-  </List.Content>
-</List.Item>
-
+<Item>
+      <Item.Content>
+        <Item.Header>{productInfo.ProductName}</Item.Header>
+        <Item.Meta>
+          {formatStringByPattern('000.000.00', productInfo.ItemNo)}
+        </Item.Meta>
+        <Item.Description>
+          {product.findItList.findIt.type === 'BOX_SHELF' ? <SelfServe findIt={product.findItList.findIt}/> : null}
+        </Item.Description>
+    </Item.Content>
+</Item>
 );
 
 export default AvailabilityDisplay;

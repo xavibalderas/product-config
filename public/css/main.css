@@ -1,0 +1,6 @@
+#logo{
+  position: fixed;
+  z-index: 3000;
+  bottom: 20px;
+  right: 10px;
+}
