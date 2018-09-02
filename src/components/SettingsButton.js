@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { actions, TYPES } from '../store/actions';
+import { actions } from '../store/actions';
 import { Button, Modal } from 'semantic-ui-react';
 import './SettingsButton.css';
 

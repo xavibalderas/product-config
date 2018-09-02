@@ -11,7 +11,7 @@ import './semantic/dist/semantic.min.css';
 
 const client = new ApolloClient({
   //  uri: "https://graphqlserver-productsinfo.herokuapp.com/"
-      uri: 'http://localhost:54652/'
+      uri: 'http://localhost:59485/'
 })
 ReactDOM.render(
   <ApolloProvider client={client}>

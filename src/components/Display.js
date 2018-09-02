@@ -1,129 +1,73 @@
-import React, { Component }from 'react';
+import React, { Component } from 'react';
+import { Header , Grid, Segment} from 'semantic-ui-react'
+import MenuContainer from './MenuContainer';
 import { connect } from 'react-redux';
-import { actions, TYPES } from '../store/actions';
-import LogInContainer from './Login.js';
-import SettingsButtonContainer from './SettingsButton.js';
-import { Loader} from 'semantic-ui-react'
-import gql from 'graphql-tag';
-import { Query } from "react-apollo";
-import ProductInfo from './ProductInfo';
-import queryReducer from '../tools/queryReducer';
+import CombinationInfo from './CombinationInfo';
+import OptionsSelector from './OptionsSelector';
+import Slider from "react-slick";
 
 
 const mapStateToProps = (state) => ({
-  accessSetup: state.settings.accessSetup,
-  isFetching: state.settings.isFetching,
   combinations: state.settings.combinations,
   items: state.data.items,
-  productsInfo: state.data.productsInfo
+  selectedCombination: state.data.selectedCombination
 });
 
-const GET_INFO_PRODUCT = gql`
-query products($productList: [String]!, $lang: String!) {
-  products(productList: $productList, lang: $lang)  {
-    ItemNo
-    ProductName
-    ProductTypeName
-    ValidDesignText
-    OnlineSellable
-    BreathTakingItem
-    NewsType
-    DesignerNameComm
-    RetailItemCustomerBenefitSummaryText
-    ItemMeasureReferenceTextMetric
-    RetailItemCommPriceList{
-      RetailItemCommPrice{
-        Price
-        CurrencyCode
-      }
-    }
-    GPRCommSelectionCriteriaSelectionList{
-      GPRCommSelectionCriteriaSelection{
-        SelectionCriteriaCode
-        SelectionCriteriaName
-        SelectionCriteriaValue
-      }
-    }
-  }
-}
-`
 
-const filtersReduce = (products) => {
-  console.log(products.length);
-  if (products.length == 0) return
-  const selectors = {}
-  let filters = {};
-  products.forEach((element, index)=>{
-    const selectionCriteriaList = element.GPRCommSelectionCriteriaSelectionList.GPRCommSelectionCriteriaSelection;
-    const partNumber = element.ItemNo;
-    selectionCriteriaList.reduce((accumulator, currentValue)=>{
-      const criteriaCode = currentValue.SelectionCriteriaCode;
-      if (filters.hasOwnProperty(criteriaCode)){
-        const position = filters[criteriaCode].findIndex((element) => {return element.value == currentValue.SelectionCriteriaValue});
-        if (position !== -1) {
-          filters[criteriaCode][position].ItemNo.push(partNumber)
-        } else {
-          filters[criteriaCode].push({
-            value: currentValue.SelectionCriteriaValue,
-            ItemNo: [partNumber]
-          });
-        }// position !== undedfined
-
-      } else {
-        filters[criteriaCode] = [{
-          value: currentValue.SelectionCriteriaValue,
-          ItemNo: [partNumber]
-        }];
-      }
-      return;
-    }, {}); //reduce
-  });
-  console.log(filters);
-
-}
-
-const mapProducts = (productsInfo) => {
-  let result = {};
-  console.log(productsInfo);
-  productsInfo.forEach((element, index)=>{
-    result[element.ItemNo] = element;
-  });
-  console.log(result);
-  return result;
-}
-
-class Display extends Component {
+class CarrierDisplay extends Component {
   constructor(props){
-    super(props);
-    this.productsInfo = {}
+      super(props)
   }
 
-render() {
-  return(
-  <div>
-    { this.props.accessSetup ? <LogInContainer/> : <SettingsButtonContainer/> }
-    { this.props.isFetching ? <Loader active/> : null }
-    {console.log(this.props.items)}
+  render() {
+    const combination = this.props.combinations[this.props.selectedCombination];
+    const settingsSlider = {
+      dots: true,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1
+    };
+    console.log(this.props.products);
+        return (
+          <Grid >
+          <Grid.Row>
+            <Grid.Column width={1}>
+              <MenuContainer combination={combination} products = {this.props.products}/>
+            </Grid.Column>
+            <Grid.Column width={15}>
+            <Grid>
+            <Grid.Row>
+              <Grid.Column width={11}>
+                <CombinationInfo combination={combination} products = {this.props.products}/>
+                <OptionsSelector products = {this.props.products}/>
+                <Slider {...settingsSlider}>
+                  {this.props.products[combination.bed].RetailItemImageList.RetailItemImage.map((element, index)=>{
+                    
+                  })}
+                </Slider>
+              </Grid.Column>
+              <Grid.Column  width={5}>
+              <Segment basic color='blue'>
+                <Header as="h5">
+                  You can do it yourself, but you don't have to
+                </Header>
+                </Segment>
+              </Grid.Column>
+              </Grid.Row>
 
-    <Query
-      query={GET_INFO_PRODUCT}
-      variables={{productList: this.props.items, lang: 'en'}} >
 
-        {({ loading, error, data }) => {
-          if (loading) return <p></p>;
-          if (error) {console.log(error); return <p> Error :</p> ;}
-          if(data.products[0]==null) return <p>Error</p>
-          //filtersReduce(data.products);
-          queryReducer.reduce(data);
-          this.productsInfo = mapProducts(data.products);
-          return (
-            <ProductInfo combinations = {this.props.combinations} products = {this.productsInfo}/>
-          ); //return
-        }}
-    </Query>
-  </div>)
+
+            </Grid>
+            </Grid.Column>
+          </Grid.Row>
+
+          </Grid>
+
+
+        );
+    }
 }
-};
 
- const  DisplayContainer =  connect(mapStateToProps)(Display);
- export default DisplayContainer
+const  Display =  connect(mapStateToProps)(CarrierDisplay);
+export default Display

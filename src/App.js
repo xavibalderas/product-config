@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import Configurator from './components/Configurator';
 import SettingsContainer from './components/Settings';
-import DisplayContainer from './components/Display';
+import DisplayContainer from './components/DisplayContainer';
 import { connect } from 'react-redux';
 import { actions } from './store/actions';
 import { Container } from 'semantic-ui-react'
@@ -10,15 +9,13 @@ import { Container } from 'semantic-ui-react'
 
 
 class RootContainer extends Component{
-  constructor(props){
-    super(props);
-  }
+
   componentDidMount(){
     this.props.isFetchingSettings(true);
     const combinations = localStorage.getItem('products');
     if (combinations){
       const v_products = JSON.parse(combinations);
-      if (v_products.length > 0){        
+      if (v_products.length > 0){
         this.props.configLoaded(v_products);
         this.props.itemsLoaded(v_products);
       }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { actions, TYPES } from '../store/actions';
+import { actions } from '../store/actions';
 import {  Modal } from 'semantic-ui-react'
 
 const mapStateToProps = (state) => ({

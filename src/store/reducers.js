@@ -1,9 +1,19 @@
-import { TYPES } from './actions'
+import { TYPES } from './actions';
+//import BedCombination from './classess'
+import queryReducer from '../tools/queryReducer';
 
+/*
+
+setting.combinations: stores all the combinations available in the local storage configuration.
+data.items:   stores the unique products numbers for each of the articles added into the full configuration.
+              produced as a result of passing the combinations to the reduceItems function.
+
+*/
 const initialStates = {
   settings: {
     loggedIn: false,
     accessSetup: false,
+    type: 'bed',
     combinations: [{
       bed:'',
       mattress: '',
@@ -15,34 +25,15 @@ const initialStates = {
     }],
     loadingConfig: false,
     isFetching: false,
+    version: '1.0'
   },
   data: {
     isFetching: false,
     didInvalidate: false,
     items: [],
-    productsInfo: {}
+    productsInfo: {},
+    selectedCombination: 0
   }
-}
-
-const reduceItems = (combinations) => {
-  let partNumbers = [];
-  combinations.forEach((combination, index) => {
-    partNumbers.push(combination.bed);
-    partNumbers.push(combination.mattress);
-    partNumbers.push(combination.slat);
-    partNumbers.push(combination.extra);
-  });
-  return partNumbers;
-}
-
-const mapProducts = (productsInfo) => {
-  let result = {};
-  console.log(productsInfo);
-  productsInfo.forEach((element, index)=>{
-    result[element.ItemNo] = element;
-  });
-  console.log(result);
-  return result;
 }
 
 export const settings = (state = initialStates.settings, action) => {
@@ -62,7 +53,7 @@ export const settings = (state = initialStates.settings, action) => {
         combinations: action.combinations
       });
 
-      case TYPES.SAVE_CONFIG:
+    case TYPES.SAVE_CONFIG:
       return Object.assign({}, state, {
         combinations: action.combinations
       });
@@ -81,18 +72,15 @@ export const data = (state = initialStates.data, action) => {
       });
 
     case TYPES.ITEMS_LOADED:
-      const items = reduceItems(action.combinations);
+      const items = queryReducer.reduceItems(action.combinations);
       return Object.assign({}, state, {
         items: items
       });
 
-    case TYPES.RECEIVE_PRODUCTS:
-      const productInfo = mapProducts(action.productsInfo);
+    case TYPES.SELECT_COMBINATION:
       return Object.assign({}, state, {
-        isFetching: false,
-        didInvalidate: false,
-        items: productInfo
-      });
+        selectedCombination: action.combination
+      })
 
     default:
       return state;
