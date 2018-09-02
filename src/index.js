@@ -14,7 +14,7 @@ const URI_API = process.env.REACT_APP_GRAPHCMS_API;
 
 const client = new ApolloClient({
       //uri: 'http://localhost:59485/'
-      uri = URI_API;
+      uri = URI_API
 
 })
 ReactDOM.render(
