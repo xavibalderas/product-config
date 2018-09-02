@@ -25,9 +25,7 @@ class Settings extends Component {
         this.setState({
           combinations: pro
         })
-      }
-      console.log(pro);
-
+      }      
   }
 
   addCombination = () =>{
