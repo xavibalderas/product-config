@@ -94,7 +94,7 @@ query products($productList: [String]!, $lang: String!) {
 }*/
 
 const mapProducts = (productsInfo) => {
-  let result = {};
+  let result = {};    
   productsInfo.forEach((element, index)=>{
     result[element.ItemNo] = element;
   });

@@ -13,7 +13,7 @@ import './semantic/dist/semantic.min.css';
 const URI_API = process.env.REACT_APP_GRAPHCMS_API;
 
 const client = new ApolloClient({
-      //uri: 'http://localhost:59485/'
+      //uri: 'http://localhost:51782/'
       uri: URI_API
 
 })
