@@ -7,8 +7,8 @@ const SelfServe = ({findIt}) => (
   <Table compact='very' size='small' singleLine basic='very'>
   <Table.Header>
    <Table.Row verticalAlign="bottom">
-     <Table.HeaderCell>Row</Table.HeaderCell>
-     <Table.HeaderCell>Cell</Table.HeaderCell>
+     <Table.HeaderCell>Regal</Table.HeaderCell>
+     <Table.HeaderCell>Fach</Table.HeaderCell>
    </Table.Row>
  </Table.Header>
  <Table.Body>
