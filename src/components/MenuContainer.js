@@ -4,6 +4,11 @@ import gql from 'graphql-tag';
 import { Query } from "react-apollo";
 import AvailabilityDisplay from './AvailabilityDisplay'
 
+
+const hasReference = (element) => {
+  return element.trim().length===8
+}
+
 const GET_AVAILABILITY_PRODUCT = gql`
 query availability($productList: [String]!, $lang: String!, $store: String!) {
   availability(productList: $productList, lang: $lang, store: $store)  {
@@ -38,7 +43,12 @@ const _parseProductBenefits = (product) => {
 }
 
 const _productsItemNumber = (combination) => {
-  return [combination.bed, combination.mattress, combination.extra, combination.slat];
+  let r = [];
+  hasReference(combination.bed) ? r.push(combination.bed) : null;
+  hasReference(combination.mattress) ? r.push(combination.mattress) : null;
+  hasReference(combination.extra) ? r.push(combination.extra) : null;
+  hasReference(combination.slat) ? r.push(combination.slat) : null;
+  return r;
 }
 
 class MenuContainer  extends Component {
