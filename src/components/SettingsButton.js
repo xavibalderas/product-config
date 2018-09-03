@@ -9,45 +9,48 @@ class SettingsButton extends React.Component{
 
   constructor(props){
     super(props);
-    this.state= {modalOpen:false};
-    this.combination = {
-      actual: "",
+    this.state= {
+      modalOpen:false,
+      combination: '',
       access: process.env.REACT_APP_SETTINGS_PASSWORD
-    }
+    };
   };
 
   handleOpen = () => this.setState({ modalOpen: true });
 
   resetCombination= () => {
-    console.log(this.combination);
-    this.combination.actual="";
+    this.setState({combination: ''});
   };
 
   render(){
+    const com = this.state.combination;
+    const acc = this.state.access;
+
     return(
       <Modal
       trigger={<Button className = "settings-button" onClick={this.handleOpen} ></Button>}
       >
          <Modal.Header>Log In</Modal.Header>
          <Modal.Content>
+         <h2>{this.state.combination}</h2>
          <Segment basic>
-          <Button onClick={() => this.combination.actual === this.combination.access ? this.props.onLogIn(true) : this.resetCombination() }>Log in</Button><br/>
+          <Button onClick={() => com === acc ? this.props.onLogIn(true) : this.resetCombination() }>Log in</Button><br/>
          </Segment>
          <Segment basic>
-         <Button onClick={() => this.combination.actual+="1" }>1</Button>
-         <Button onClick={() => this.combination.actual+="2" }>2</Button>
-         <Button onClick={() => this.combination.actual+="3" }>3</Button>
+         <Button onClick={() => this.setState({combination: this.state.combination + '1'})}>1</Button>
+         <Button onClick={() => this.setState({combination: this.state.combination + '2'})}>2</Button>
+         <Button onClick={() => this.setState({combination: this.state.combination + '3'})}>3</Button>
          </Segment>
         <Segment basic>
-         <Button onClick={() => this.combination.actual+="4" }>4</Button>
-         <Button onClick={() => this.combination.actual+="5" }>5</Button>
-         <Button onClick={() => this.combination.actual+="6" }>6</Button>
+         <Button onClick={() => this.setState({combination: this.state.combination + '4'})}>4</Button>
+         <Button onClick={() => this.setState({combination: this.state.combination + '5'})}>5</Button>
+         <Button onClick={() => this.setState({combination: this.state.combination + '6'})}>6</Button>
          </Segment>
          <Segment basic>
-         <Button onClick={() => this.combination.actual+="7" }>7</Button>
-         <Button onClick={() => this.combination.actual+="8" }>8</Button>
-         <Button onClick={() => this.combination.actual+="9" }>9</Button>
-         <Button onClick={() => this.combination.actual+="0" }>0</Button>
+         <Button onClick={() => this.setState({combination: this.state.combination + '7'})}>7</Button>
+         <Button onClick={() => this.setState({combination: this.state.combination + '8'})}>8</Button>
+         <Button onClick={() => this.setState({combination: this.state.combination + '9'})}>9</Button>
+         <Button onClick={() => this.setState({combination: this.state.combination + '0'})}>0</Button>
          </Segment>
          </Modal.Content>
 

@@ -63,7 +63,7 @@
   font-style: none;
   font-weight: bold;
   text-transform: none;
-  border-bottom: 1px solid rgba(34, 36, 38, 0.1);
+  border-bottom: 0px;
   border-left: none;
 }
 .ui.table thead tr > th:first-child {

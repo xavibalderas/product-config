@@ -26,6 +26,7 @@ const AvailabilityDisplay = ({product, productInfo}) => (
       <Item.Content>
         <Item.Header>{productInfo.ProductName}</Item.Header>
         <Item.Meta>
+          {productInfo.ProductTypeName}<br/>
           {formatStringByPattern('000.000.00', productInfo.ItemNo)}
         </Item.Meta>
         <Item.Description>
