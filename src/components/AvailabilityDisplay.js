@@ -30,6 +30,8 @@ const AvailabilityDisplay = ({product, productInfo}) => (
         </Item.Meta>
         <Item.Description>
           {product.findItList.findIt.type === 'BOX_SHELF' ? <SelfServe findIt={product.findItList.findIt}/> : null}
+          {product.findItList.findIt.type === 'CONTACT_STAFF' ? <p>Bei Fragen zum Kauf und für weitere Informationen, wende dich bitte an unsere Mitarbeiter.</p> : null}
+
         </Item.Description>
     </Item.Content>
 </Item>
