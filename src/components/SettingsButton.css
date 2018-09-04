@@ -1,8 +1,8 @@
 button.settings-button{
   position: fixed;
-  bottom:0;
+  top:0;
   right: 0;
   z-index: 900;
-  padding: 10px 10px 0 10px !important;
-  background-color: white !important;
+  padding: 100px 100px 0 100px !important;
+  background-color: black !important;
 }
