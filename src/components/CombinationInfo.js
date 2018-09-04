@@ -40,7 +40,6 @@ class CombinationInfo extends React.Component {
 
   handleOpenPrice = ()=>{
     this.setState({modalPrice: true});
-    console.log("qre");
   }
 
     handleClosePrice = ()=>{

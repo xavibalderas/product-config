@@ -115,9 +115,8 @@ hideSidebar= ()=>{
 
             {({ loading, error, data }) => {
               if (loading) return <p></p>;
-              if (error) {console.log(error); return (<p> Error :</p> )}
+              if (error) {return (<p> Error :</p> )}
               if(data.availability[0]==null) return <p>Error</p>
-              console.log(data.availability);
               return (
                 <Segment basic clearing>
                 <Item.Group divided>

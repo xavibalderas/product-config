@@ -41,6 +41,11 @@ const mapDispatchToProps = dispatch => {
 const  CardCombinationRoot =  connect(null, mapDispatchToProps)(CardCombination);
 
 
+const hasReference = (element) => {
+  return element.trim().length===8
+}
+
+
 const mapStateToProps = (state) => ({
   combinations: state.settings.combinations,
   items: state.data.items,
@@ -54,7 +59,7 @@ const RootOptionsSelector = ({combinations, items, selectedCombination, products
     </Header>
     <Card.Group itemsPerRow={4}>
       {combinations.map((element, index) => {
-        return index !== selectedCombination ? <CardCombinationRoot key={index} combination={element} index={index} products={products}/> : null
+        return (index !== selectedCombination) && (hasReference(element.bed)) ? <CardCombinationRoot key={index} combination={element} index={index} products={products}/> : null
       })}
     </Card.Group>
 
