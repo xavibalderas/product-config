@@ -42,7 +42,7 @@ const  CardCombinationRoot =  connect(null, mapDispatchToProps)(CardCombination)
 
 
 const hasReference = (element) => {
-  return element.trim().length===8
+  return element.trim().length===8 || element.trim().length===9 
 }
 
 
