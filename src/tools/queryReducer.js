@@ -15,8 +15,18 @@ const queryReducer = {
       combination.extra.trim().length===8 ? partNumbers.push(combination.extra.toUpperCase()) : null;
     });
     return partNumbers;
-  }
+  },
 
+  isValidItem: (product) => {
+    let item = product.trim().toUpperCase();
+    let length = product.length;
+
+    if (length < 8 || length > 9) { return false };
+    if (length === 9) {
+      return (item.substring(0,1) === 'S') ? true : false;
+    }
+    return true;
+  }
 }
 
 export default queryReducer;

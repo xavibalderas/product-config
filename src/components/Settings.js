@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { actions } from '../store/actions';
-import { Input, Form ,Radio, Button, Icon, Table, Grid} from 'semantic-ui-react'
+import { Input, Form ,Radio, Button, Icon, Table, Grid, Card} from 'semantic-ui-react'
 
 class Settings extends Component {
   constructor(props){
@@ -21,11 +21,11 @@ class Settings extends Component {
   handleChange = (e, data) => {
     const pro = this.state.combinations.slice();
       if (typeof pro[data.data_index] !== undefined ) {
-        pro[data.data_index][data.name] = data.value;
+        pro[data.data_index][data.data_article][data.name] = data.value;
         this.setState({
           combinations: pro
         })
-      }      
+      }
   }
 
   addCombination = () =>{
@@ -54,130 +54,51 @@ class Settings extends Component {
       }
   }
 
+  addArticle = (index) => {
+    var dup_array = this.state.combinations.slice();
+    dup_array[index].push({itemno:'', qty:0});
+    this.setState({combinations: dup_array});
+  }
+
   render() {
     return(
-      <div >
-      <Grid>
-        <Grid.Row>
-        <Grid.Column width={16}>
-        <h2>Configuration</h2>
-        <Table compact celled size="small" basic='very' collapsing>
-          <Table.Header>
-            <Table.Row>
-              <Table.HeaderCell>Default</Table.HeaderCell>
-              <Table.HeaderCell>Bed</Table.HeaderCell>
-              <Table.HeaderCell>Mattress</Table.HeaderCell>
-              <Table.HeaderCell>Qty</Table.HeaderCell>
-              <Table.HeaderCell>Slatts</Table.HeaderCell>
-              <Table.HeaderCell>Qty</Table.HeaderCell>
-              <Table.HeaderCell>Extra</Table.HeaderCell>
-              <Table.HeaderCell>Qty</Table.HeaderCell>
-            </Table.Row>
-          </Table.Header>
-          <Table.Body>
-            {this.state.combinations.map((combination, index)=>{
-              return (
-                <Table.Row key = {index}>
-                <Table.Cell collapsing>
-                <Radio
-                           toggle
-                           name='defaultCombination'
-                           value='this'
-                  />
-                </Table.Cell>
-                  <Table.Cell collapsing>
-                    <Input
-                    name = 'bed'
-                    data_index = {index}
-                    onChange = {this.handleChange}
-                    placeholder = {combination.bed}
-                    value = {combination.bed}
+      <div>
+        <Card.Group>
+        {this.state.combinations.map((combination, index)=>{
+          return (
+            <Card key={index}>
+              <Card.Content>
+                <Card.Header>Combination {index}</Card.Header>
+              </Card.Content>
 
-                    />
-                  </Table.Cell>
-
-                  <Table.Cell collapsing>
-                    <Input
-                    name = 'mattress'
-                    data_index = {index}
-                    onChange = {this.handleChange}
-                    placeholder = {combination.mattress}
-                    value = {combination.mattress}
-                    />
-                  </Table.Cell>
-
-                  <Table.Cell collapsing>
+              {combination.map((article, i)=>{
+                return (
+                <Card.Content key = {i}>
                   <Input
-                  name = 'mattress_qty'
+                  name = 'itemno'
+                  data_article = {i}
                   data_index = {index}
                   onChange = {this.handleChange}
-                  placeholder = {combination.mattress_qty}
-                  value = {combination.mattress_qty}
-                  />
-                  </Table.Cell>
-
-                  <Table.Cell collapsing>
+                  placeholder = 'Product Number'
+                  value = {article.itemno} />
                   <Input
-                  name = 'slat'
+                  name = 'qty'
+                  data_article = {i}
                   data_index = {index}
                   onChange = {this.handleChange}
-                  placeholder = {combination.slat}
-                  value = {combination.slat}
-                  />
-                  </Table.Cell>
+                  placeholder = 'Quantity'
+                  value = {article.qty} />
+                </Card.Content>
+                );
+              })}
 
-                  <Table.Cell collapsing>
-                  <Input
-                  name = 'slat_qty'
-                  data_index = {index}
-                  onChange = {this.handleChange}
-                  placeholder = {combination.slat_qty}
-                  value = {combination.slat_qty}
-                  />
-                  </Table.Cell>
-
-                  <Table.Cell collapsing>
-                  <Input
-                  name = 'extra'
-                  data_index = {index}
-                  onChange = {this.handleChange}
-                  placeholder = {combination.extra}
-                  value = {combination.extra}
-                  />
-                  </Table.Cell>
-
-                  <Table.Cell collapsing>
-                  <Input
-                  name = 'extra_qty'
-                  data_index = {index}
-                  onChange = {this.handleChange}
-                  placeholder = {combination.extra_qty}
-                  value = {combination.extra_qty}
-                  />
-                  </Table.Cell>
-
-                </Table.Row>
-
-              )
-
-            })}
-          </Table.Body>
-          <Table.Footer fullWidth>
-          <Table.Row>
-            <Table.HeaderCell colSpan='7'>
-              <Button icon labelPosition='left' primary size='small' onClick={() => this.addCombination()}>
-                <Icon name='plus' /> Add Combination
-              </Button>
-            </Table.HeaderCell>
-          </Table.Row>
-          </Table.Footer>
-
-        </Table>
-        <Form.Button onClick={() => this.save()}>Save</Form.Button>
-          <Form.Button onClick={() => this.props.onLogOut()}>Log out</Form.Button>
-          </Grid.Column>
-          </Grid.Row>
-          </Grid>
+              <Card.Content extra>
+                <Button content='Add article' onClick={() => this.addArticle(index)}/>
+              </Card.Content>
+            </Card>
+          )
+        })}
+        </Card.Group>
       </div>
     )
   }

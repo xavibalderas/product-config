@@ -14,15 +14,10 @@ const initialStates = {
     loggedIn: false,
     accessSetup: false,
     type: 'bed',
-    combinations: [{
-      bed:'',
-      mattress: '',
-      mattress_qty: 1,
-      slat: '',
-      slat_qty: 1,
-      extra: '',
-      extra_qty: 0
-    }],
+    combinations: [[{
+      itemno:'',
+      qty:0
+    }]],
     loadingConfig: false,
     isFetching: false,
     version: '1.0'
