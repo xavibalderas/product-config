@@ -9,10 +9,10 @@ const queryReducer = {
   reduceItems: (combinations) => {
     let partNumbers = [];
     combinations.forEach((combination, index) => {
-      (combination.bed.trim().length===8 || combination.bed.trim().length===9) ? partNumbers.push(combination.bed) : null;
-      combination.mattress.trim().length===8 ? partNumbers.push(combination.mattress) : null;
-      combination.slat.trim().length===8 ? partNumbers.push(combination.slat) : null;
-      combination.extra.trim().length===8 ? partNumbers.push(combination.extra) : null;
+      (combination.bed.trim().length===8 || combination.bed.trim().length===9) ? partNumbers.push(combination.bed.toUpperCase()) : null;
+      combination.mattress.trim().length===8 ? partNumbers.push(combination.mattress.toUpperCase()) : null;
+      combination.slat.trim().length===8 ? partNumbers.push(combination.slat.toUpperCase()) : null;
+      combination.extra.trim().length===8 ? partNumbers.push(combination.extra.toUpperCase()) : null;
     });
     return partNumbers;
   }

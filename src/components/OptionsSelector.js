@@ -10,15 +10,19 @@ class CardCombination extends Component {
       this.props.selectCombination(name);
   }
   render() {
+    
+    if (this.props.products[this.props.combination.bed.toUpperCase()] === undefined) {
+      return null;
+    }
     return (
       <Card
       link
       onClick = {this.handleCardClick}
       name={this.props.index}>
         <Card.Content>
-        <Card.Header>{this.props.products[this.props.combination.bed].ProductName}</Card.Header>
+        <Card.Header>{this.props.products[this.props.combination.bed.toUpperCase()].ProductName}</Card.Header>
         <Card.Description>
-          {this.props.products[this.props.combination.bed].ValidDesignText}, {this.props.products[this.props.combination.bed].ItemMeasureReferenceTextMetric}
+          {this.props.products[this.props.combination.bed.toUpperCase()].ValidDesignText}, {this.props.products[this.props.combination.bed.toUpperCase()].ItemMeasureReferenceTextMetric}
         </Card.Description>
         </Card.Content>
       </Card>
@@ -42,7 +46,7 @@ const  CardCombinationRoot =  connect(null, mapDispatchToProps)(CardCombination)
 
 
 const hasReference = (element) => {
-  return element.trim().length===8 || element.trim().length===9 
+  return element.trim().length===8 || element.trim().length===9
 }
 
 

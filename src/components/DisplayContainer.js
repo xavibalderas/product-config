@@ -96,7 +96,9 @@ query products($productList: [String]!, $lang: String!) {
 const mapProducts = (productsInfo) => {
   let result = {};
   productsInfo.forEach((element, index)=>{
+    if (element!==null){
     result[element.ItemNo] = element;
+    }
   });
   return result;
 }
@@ -122,6 +124,7 @@ render() {
           if (error) {return (<p> Error: {error}</p> )}
           if(data.products[0]==null) return (<p>Error: there are no products configured.</p>)
           //filtersReduce(data.products);
+          console.log(data.products);
           queryReducer.reduce(data);
           this.productsInfo = mapProducts(data.products);
           return (<Display products = {this.productsInfo}/>); //return
