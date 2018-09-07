@@ -49,7 +49,7 @@ class CombinationInfo extends React.Component {
   render() {
     const combination = this.props.combination;
     const products = this.props.products;
-
+    if (hasReference(combination.bed)===false) return null;
     return (
       <Segment basic>
         <Header as="h2">
@@ -76,7 +76,7 @@ class CombinationInfo extends React.Component {
         open={this.state.modalPrice}
         onClose={this.handleClosePrice}
         dimmer="inverted"
-        size='medium'
+        size='large'
         closeIcon
         >
         <Header icon='list' content='Komplettpreis' />

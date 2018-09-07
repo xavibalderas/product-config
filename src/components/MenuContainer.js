@@ -30,12 +30,16 @@ query availability($productList: [String]!, $lang: String!, $store: String!) {
 
 const _parseBenefits = (combination, products) => {
   let benefits = [];
-  benefits = _parseProductBenefits(products[combination.bed]);
-  return benefits;
+  return hasReference(combination.bed)? _parseProductBenefits(products[combination.bed]) : [];
+  //benefits = _parseProductBenefits(products[combination.bed]);
+  //return benefits;
 }
 
 const _parseProductBenefits = (product) => {
   let p=[];
+  if (product.RetailItemCustomerBenefitList=== undefined){
+    return [];
+  }
   if (product.RetailItemCustomerBenefitList.RetailItemCustomerBenefit.length > 0){
       p = product.RetailItemCustomerBenefitList.RetailItemCustomerBenefit.map((benefit, index)=>{return <List.Item key = {index}>{benefit.CustomerBenefitText}</List.Item>})
   }
