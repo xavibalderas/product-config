@@ -55,7 +55,7 @@ const mapStateToProps = (state) => ({
 const RootOptionsSelector = ({combinations, items, selectedCombination, products }) => (
   <Segment basic color='yellow'>
     <Header as="h5">
-      Other available options
+      Alle weiteren Möglichkeiten
     </Header>
     <Card.Group itemsPerRow={4}>
       {combinations.map((element, index) => {

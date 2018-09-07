@@ -11,8 +11,8 @@ const _calculatePrice = (combination, products) => {
   return price;
 }
 
-const hasReference = (element) => {
-  return element.trim().length===8
+const hasReference = (element) => {  
+  return (element.trim().length===8 || element.trim().length===9)
 }
 
 const SubProductInfo = ({icon, article}) => (

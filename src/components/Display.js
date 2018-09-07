@@ -44,7 +44,7 @@ class CarrierDisplay extends Component {
                         <Item.Content>
                           <Item.Header as='a'>Lieferservice</Item.Header>
                           <Item.Description>
-                            CHF 69.00
+                            CHF 99.00
                           </Item.Description>
                         </Item.Content>
                       </Item>
