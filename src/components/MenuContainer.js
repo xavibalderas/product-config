@@ -5,8 +5,9 @@ import { Query } from "react-apollo";
 import AvailabilityDisplay from './AvailabilityDisplay'
 
 
-const hasReference = (element) => {
-  return element.trim().length===8
+const hasReference = (element, products) => {
+  return ((element.trim().length===8 || element.trim().length===9) && products.hasOwnProperty(element))
+
 }
 
 const GET_AVAILABILITY_PRODUCT = gql`
@@ -30,7 +31,7 @@ query availability($productList: [String]!, $lang: String!, $store: String!) {
 
 const _parseBenefits = (combination, products) => {
   let benefits = [];
-  return hasReference(combination.bed)? _parseProductBenefits(products[combination.bed]) : [];
+  return hasReference(combination.bed, products)? _parseProductBenefits(products[combination.bed]) : [];
   //benefits = _parseProductBenefits(products[combination.bed]);
   //return benefits;
 }
@@ -46,12 +47,12 @@ const _parseProductBenefits = (product) => {
   return p;
 }
 
-const _productsItemNumber = (combination) => {
+const _productsItemNumber = (combination, products) => {
   let r = [];
-  hasReference(combination.bed) ? r.push(combination.bed) : null;
-  hasReference(combination.mattress) ? r.push(combination.mattress) : null;
-  hasReference(combination.extra) ? r.push(combination.extra) : null;
-  hasReference(combination.slat) ? r.push(combination.slat) : null;
+  hasReference(combination.bed, products) ? r.push(combination.bed) : null;
+  hasReference(combination.mattress, products) ? r.push(combination.mattress) : null;
+  hasReference(combination.extra, products) ? r.push(combination.extra) : null;
+  hasReference(combination.slat, products) ? r.push(combination.slat) : null;
   return r;
 }
 
@@ -114,7 +115,7 @@ hideSidebar= ()=>{
           </Button>
         <Query
           query={GET_AVAILABILITY_PRODUCT}
-          variables={{productList: _productsItemNumber(this.props.combination), lang: 'de', store: '079'}}
+          variables={{productList: _productsItemNumber(this.props.combination, this.props.products), lang: 'de', store: '079'}}
           skip={v.stock===false}>
 
             {({ loading, error, data }) => {

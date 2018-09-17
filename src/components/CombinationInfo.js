@@ -4,15 +4,16 @@ import './Header.css';
 
 const _calculatePrice = (combination, products) => {
   let price = 0;
-  price += hasReference(combination.bed) ? products[combination.bed].RetailItemCommPriceList.RetailItemCommPrice.Price : 0;
-  price += hasReference(combination.mattress) ? products[combination.mattress].RetailItemCommPriceList.RetailItemCommPrice.Price * combination.mattress_qty : 0;
-  price += hasReference(combination.slat) ? products[combination.slat].RetailItemCommPriceList.RetailItemCommPrice.Price * combination.slat_qty : 0;
-  price += hasReference(combination.extra) ? products[combination.extra].RetailItemCommPriceList.RetailItemCommPrice.Price * combination.extra_qty : 0;
+  price += hasReference(combination.bed, products) ? products[combination.bed].RetailItemCommPriceList.RetailItemCommPrice.Price : 0;
+  price += hasReference(combination.mattress, products) ? products[combination.mattress].RetailItemCommPriceList.RetailItemCommPrice.Price * combination.mattress_qty : 0;
+  price += hasReference(combination.slat, products) ? products[combination.slat].RetailItemCommPriceList.RetailItemCommPrice.Price * combination.slat_qty : 0;
+  price += hasReference(combination.extra, products) ? products[combination.extra].RetailItemCommPriceList.RetailItemCommPrice.Price * combination.extra_qty : 0;
   return price;
 }
 
-const hasReference = (element) => {  
-  return (element.trim().length===8 || element.trim().length===9)
+const hasReference = (element, products) => {
+
+  return ((element.trim().length===8 || element.trim().length===9) && products.hasOwnProperty(element))
 }
 
 const SubProductInfo = ({icon, article}) => (
@@ -49,7 +50,7 @@ class CombinationInfo extends React.Component {
   render() {
     const combination = this.props.combination;
     const products = this.props.products;
-    if (hasReference(combination.bed)===false) return null;
+    if (hasReference(combination.bed, products)===false) return null;
     return (
       <Segment basic>
         <Header as="h2">
@@ -66,8 +67,8 @@ class CombinationInfo extends React.Component {
         <Table singleLine basic='very'>
        <Table.Body>
           <Table.Row>
-          {hasReference(combination.mattress) ? <SubProductInfo icon={true} article={products[combination.mattress]}/> : null}
-          {hasReference(combination.slat) ? <SubProductInfo icon={true} article={products[combination.slat]}/> : null}
+          {hasReference(combination.mattress, products) ? <SubProductInfo icon={true} article={products[combination.mattress]}/> : null}
+          {hasReference(combination.slat, products) ? <SubProductInfo icon={true} article={products[combination.slat]}/> : null}
             </Table.Row>
         </Table.Body>
         </Table>
@@ -84,24 +85,24 @@ class CombinationInfo extends React.Component {
         <Table singleLine basic='very'>
        <Table.Body>
           <Table.Row>
-            {hasReference(combination.bed) ? <Table.Cell textAlign="right">1x</Table.Cell> : null}
-            {hasReference(combination.bed) ? <SubProductInfo icon={false} article={products[combination.bed]}/> : null}
-            {hasReference(combination.bed) ? <Table.Cell><h3>CHF{products[combination.bed].RetailItemCommPriceList.RetailItemCommPrice.Price }</h3></Table.Cell> : null}
+            {hasReference(combination.bed, products) ? <Table.Cell textAlign="right">1x</Table.Cell> : null}
+            {hasReference(combination.bed, products) ? <SubProductInfo icon={false} article={products[combination.bed]}/> : null}
+            {hasReference(combination.bed, products) ? <Table.Cell><h3>CHF{products[combination.bed].RetailItemCommPriceList.RetailItemCommPrice.Price }</h3></Table.Cell> : null}
         </Table.Row>
         <Table.Row>
-            {hasReference(combination.mattress) ? <Table.Cell textAlign="right">{combination.mattress_qty}x</Table.Cell> : null}
-            {hasReference(combination.mattress) ? <SubProductInfo icon={false} article={products[combination.mattress]}/> : null}
-            {hasReference(combination.mattress) ? <Table.Cell><h3>CHF{products[combination.mattress].RetailItemCommPriceList.RetailItemCommPrice.Price * combination.mattress_qty}</h3></Table.Cell> : null}
+            {hasReference(combination.mattress, products) ? <Table.Cell textAlign="right">{combination.mattress_qty}x</Table.Cell> : null}
+            {hasReference(combination.mattress, products) ? <SubProductInfo icon={false} article={products[combination.mattress]}/> : null}
+            {hasReference(combination.mattress, products) ? <Table.Cell><h3>CHF{products[combination.mattress].RetailItemCommPriceList.RetailItemCommPrice.Price * combination.mattress_qty}</h3></Table.Cell> : null}
         </Table.Row>
         <Table.Row>
-            {hasReference(combination.slat) ? <Table.Cell textAlign="right">{combination.slat_qty}x</Table.Cell> : null}
-            {hasReference(combination.slat) ? <SubProductInfo icon={false} article={products[combination.slat]}/> : null}
-            {hasReference(combination.slat) ? <Table.Cell><h3>CHF{products[combination.slat].RetailItemCommPriceList.RetailItemCommPrice.Price * combination.slat_qty}</h3></Table.Cell> : null}
+            {hasReference(combination.slat, products) ? <Table.Cell textAlign="right">{combination.slat_qty}x</Table.Cell> : null}
+            {hasReference(combination.slat, products) ? <SubProductInfo icon={false} article={products[combination.slat]}/> : null}
+            {hasReference(combination.slat, products) ? <Table.Cell><h3>CHF{products[combination.slat].RetailItemCommPriceList.RetailItemCommPrice.Price * combination.slat_qty}</h3></Table.Cell> : null}
         </Table.Row>
         <Table.Row>
-            {hasReference(combination.extra) ? <Table.Cell textAlign="right">{combination.extra_qty}x</Table.Cell> : null}
-            {hasReference(combination.extra) ? <SubProductInfo icon={false} article={products[combination.extra]}/> : null}
-            {hasReference(combination.extra) ? <Table.Cell><h3>CHF{products[combination.extra].RetailItemCommPriceList.RetailItemCommPrice.Price * combination.extra_qty}</h3></Table.Cell> : null}
+            {hasReference(combination.extra, products) ? <Table.Cell textAlign="right">{combination.extra_qty}x</Table.Cell> : null}
+            {hasReference(combination.extra, products) ? <SubProductInfo icon={false} article={products[combination.extra]}/> : null}
+            {hasReference(combination.extra, products) ? <Table.Cell><h3>CHF{products[combination.extra].RetailItemCommPriceList.RetailItemCommPrice.Price * combination.extra_qty}</h3></Table.Cell> : null}
         </Table.Row>
         <Table.Row>
           <Table.Cell></Table.Cell><Table.Cell textAlign="right"><h3>Komplettpreis</h3></Table.Cell>
