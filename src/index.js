@@ -13,8 +13,8 @@ import './semantic/dist/semantic.min.css';
 const URI_API = process.env.REACT_APP_GRAPHCMS_API;
 
 const client = new ApolloClient({
-      uri: 'https://graphqlserver-productsinfo.herokuapp.com/'
-      //uri: URI_API
+      //uri: 'https://graphqlserver-productsinfo.herokuapp.com/'
+      uri: URI_API
 
 })
 ReactDOM.render(
