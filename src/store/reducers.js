@@ -14,10 +14,16 @@ const initialStates = {
     loggedIn: false,
     accessSetup: false,
     type: 'bed',
-    combinations: [[{
-      itemno:'',
-      qty:0
-    }]],
+    combinations: [
+      [
+        {
+          itemno:'',
+          qty:1,
+          isValid: false
+        }
+      ]
+    ],
+    config: {},
     loadingConfig: false,
     isFetching: false,
     version: '1.0'
@@ -47,7 +53,10 @@ export const settings = (state = initialStates.settings, action) => {
         isFetching: false,
         combinations: action.combinations
       });
-
+    case TYPES.SETTINGS_LOADED:
+      return Object.assign({}, state, {
+        config: action.settings
+      });
     case TYPES.SAVE_CONFIG:
       return Object.assign({}, state, {
         combinations: action.combinations
@@ -67,7 +76,7 @@ export const data = (state = initialStates.data, action) => {
       });
 
     case TYPES.ITEMS_LOADED:
-      const items = queryReducer.reduceItems(action.combinations);
+      const items = queryReducer.reduceCombinations(action.combinations);
       return Object.assign({}, state, {
         items: items
       });

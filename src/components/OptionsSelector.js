@@ -10,8 +10,8 @@ class CardCombination extends Component {
       this.props.selectCombination(name);
   }
   render() {
-    
-    if (this.props.products[this.props.combination.bed.toUpperCase()] === undefined) {
+
+    if (this.props.products[this.props.combination[0].itemno.toUpperCase()] === undefined) {
       return null;
     }
     return (
@@ -20,9 +20,9 @@ class CardCombination extends Component {
       onClick = {this.handleCardClick}
       name={this.props.index}>
         <Card.Content>
-        <Card.Header>{this.props.products[this.props.combination.bed.toUpperCase()].ProductName}</Card.Header>
+        <Card.Header>{this.props.products[this.props.combination[0].itemno.toUpperCase()].ProductName}</Card.Header>
         <Card.Description>
-          {this.props.products[this.props.combination.bed.toUpperCase()].ValidDesignText}, {this.props.products[this.props.combination.bed.toUpperCase()].ItemMeasureReferenceTextMetric}
+          {this.props.products[this.props.combination[0].itemno.toUpperCase()].ValidDesignText}, {this.props.products[this.props.combination[0].itemno.toUpperCase()].ItemMeasureReferenceTextMetric}
         </Card.Description>
         </Card.Content>
       </Card>
@@ -63,7 +63,7 @@ const RootOptionsSelector = ({combinations, items, selectedCombination, products
     </Header>
     <Card.Group itemsPerRow={4}>
       {combinations.map((element, index) => {
-        return (index !== selectedCombination) && (hasReference(element.bed)) ? <CardCombinationRoot key={index} combination={element} index={index} products={products}/> : null
+        return (index !== selectedCombination) && (element.length!=0) ? <CardCombinationRoot key={index} combination={element} index={index} products={products}/> : null
       })}
     </Card.Group>
 

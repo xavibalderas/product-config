@@ -5,25 +5,79 @@ import DisplayContainer from './components/DisplayContainer';
 import { connect } from 'react-redux';
 import { actions } from './store/actions';
 import { Container } from 'semantic-ui-react'
-
-
+import queryReducer from './tools/queryReducer';
+//import updater from '../tools/update';
 
 class RootContainer extends Component{
 
   componentDidMount(){
     this.props.isFetchingSettings(true);
-    const combinations = localStorage.getItem('products');
-    if (combinations){
-      const v_products = JSON.parse(combinations);
-      if (v_products.length > 0){
-        this.props.configLoaded(v_products);
-        this.props.itemsLoaded(v_products);
+    this.updateOldSettings();
+    const settings = localStorage.getItem('settings');
+
+    if (settings){
+      const v_settings = JSON.parse(settings);
+      console.log(v_settings);
+      this.props.settingsLoaded(v_settings.config);
+      if (v_settings.combinations.length > 0){
+        this.props.configLoaded(v_settings.combinations);
+        this.props.itemsLoaded(v_settings.combinations);
         this.props.selectCombination(0);
       }
 
     }
     this.props.isFetchingSettings(false);
   }
+
+  updateOldSettings(){
+    const combinations = localStorage.getItem('products');
+    if (combinations){
+      //We are in the old system, now the data is saved under "settings";
+      const v_products = JSON.parse(combinations);
+      if (v_products.length > 0){
+        let n_list = v_products.map((item, key)=>{
+          let _r = [];
+          if (queryReducer.isValidItem(item.bed)){
+            _r.push({
+              itemno: item.bed.toUpperCase(),
+              qty: 1,
+              isValid: true
+            })
+          };
+          if (queryReducer.isValidItem(item.mattress)){
+            _r.push({
+              itemno: item.mattress.toUpperCase(),
+              qty: item.mattress_qty,
+              isValid: true
+            })
+          };
+          if (queryReducer.isValidItem(item.slat)){
+            _r.push({
+              itemno: item.slat.toUpperCase(),
+              qty: item.slat_qty,
+              isValid: true
+            })
+          };
+          if (queryReducer.isValidItem(item.extra)){
+            _r.push({
+              itemno: item.extra.toUpperCase(),
+              qty: item.extra_qty,
+              isValid: true
+            })
+          };
+          return _r;
+        });
+        let nu = {
+          combinations: n_list,
+          version: '1.0',
+          config: {}
+        }
+        localStorage.setItem('settings', JSON.stringify(nu));
+        localStorage.removeItem('products')
+      }
+    }
+  }
+
   render(){
     return (
       <Container fluid>
@@ -42,8 +96,8 @@ const mapDispatchToProps = dispatch => {
     isFetchingSettings: (bool) => dispatch(actions.loadingConfig(bool)),
     configLoaded: (combinations) => dispatch(actions.configLoaded(combinations)),
     itemsLoaded: (combinations) => dispatch(actions.itemsLoaded(combinations)),
-    selectCombination: (combination) => {dispatch(actions.selectCombination(combination))
-    }
+    selectCombination: (combination) => dispatch(actions.selectCombination(combination)),
+    settingsLoaded: (settings) => dispatch(actions.settingsLoaded(settings))
   }
 }
 

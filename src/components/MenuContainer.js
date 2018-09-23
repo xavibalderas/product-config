@@ -3,6 +3,7 @@ import { Menu, Sidebar,Button,  Segment, Icon, List, Item} from 'semantic-ui-rea
 import gql from 'graphql-tag';
 import { Query } from "react-apollo";
 import AvailabilityDisplay from './AvailabilityDisplay'
+import queryReducer from '../tools/queryReducer';
 
 
 const hasReference = (element) => {
@@ -30,14 +31,18 @@ query availability($productList: [String]!, $lang: String!, $store: String!) {
 
 const _parseBenefits = (combination, products) => {
   let benefits = [];
-  return hasReference(combination.bed)? _parseProductBenefits(products[combination.bed]) : [];
+  console.log(combination);
+  console.log(products);
+
+  return  combination[0].isValid ? _parseProductBenefits(products[combination[0].itemno]) : null;
   //benefits = _parseProductBenefits(products[combination.bed]);
   //return benefits;
 }
 
 const _parseProductBenefits = (product) => {
+  console.log(product);
   let p=[];
-  if (product.RetailItemCustomerBenefitList=== undefined){
+  if (product.RetailItemCustomerBenefitList === undefined || product.RetailItemCustomerBenefitList === null){
     return [];
   }
   if (product.RetailItemCustomerBenefitList.RetailItemCustomerBenefit.length > 0){
@@ -46,14 +51,6 @@ const _parseProductBenefits = (product) => {
   return p;
 }
 
-const _productsItemNumber = (combination) => {
-  let r = [];
-  hasReference(combination.bed) ? r.push(combination.bed) : null;
-  hasReference(combination.mattress) ? r.push(combination.mattress) : null;
-  hasReference(combination.extra) ? r.push(combination.extra) : null;
-  hasReference(combination.slat) ? r.push(combination.slat) : null;
-  return r;
-}
 
 class MenuContainer  extends Component {
   state = { info: false, stock: false, email: false }
@@ -114,7 +111,7 @@ hideSidebar= ()=>{
           </Button>
         <Query
           query={GET_AVAILABILITY_PRODUCT}
-          variables={{productList: _productsItemNumber(this.props.combination), lang: 'de', store: '079'}}
+          variables={{productList: queryReducer.reduceItems(this.props.combination), lang: 'de', store: '079'}}
           skip={v.stock===false}>
 
             {({ loading, error, data }) => {

@@ -127,6 +127,7 @@ render() {
           console.log(data.products);
           queryReducer.reduce(data);
           this.productsInfo = mapProducts(data.products);
+          console.log(this.productsInfo);
           return (<Display products = {this.productsInfo}/>); //return
         }}
     </Query>

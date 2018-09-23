@@ -18,10 +18,9 @@ class CarrierDisplay extends Component {
 
   render() {
     const combination = this.props.combinations[this.props.selectedCombination];
-
-
+    console.log(combination);
         return (
-          <Grid >
+          <Grid>
           <Grid.Row>
             <Grid.Column width={1}>
               <MenuContainer combination={combination} products = {this.props.products}/>

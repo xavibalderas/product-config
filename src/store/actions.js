@@ -8,6 +8,7 @@ export const TYPES = {
   LOADING_CONFIG: 'LOAD_CONFIG',
   CONFIG_LOADED: 'CONFIG_LOADED',
   ITEMS_LOADED: 'ITEMS_LOADED',
+  SETTINGS_LOADED: 'SETTINGS_LOADED'
 }
 
 export const actions = {
@@ -19,5 +20,6 @@ export const actions = {
   loadingConfig: (bool) => ({ type: TYPES.LOADING_CONFIG, bool }),
   configLoaded: (combinations) => ({ type: TYPES.CONFIG_LOADED, combinations }),
   itemsLoaded: (combinations) => ({ type: TYPES.ITEMS_LOADED, combinations }),
+  settingsLoaded: (settings) => ({ type: TYPES.SETTINGS_LOADED, settings }),
   selectCombination: (combination) => ({type: TYPES.SELECT_COMBINATION, combination })
 }

@@ -1,20 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { actions } from '../store/actions';
-import { Input, Form ,Radio, Button, Icon, Table, Grid, Card} from 'semantic-ui-react'
+import { Input, Form ,Radio, Button, Icon, Table, Grid, Card} from 'semantic-ui-react';
+import queryReducer from '../tools/queryReducer';
 
 class Settings extends Component {
   constructor(props){
     super(props);
     this.combinations = props.combinations;
     this.state = {
-      combinations: props.combinations
+      combinations: props.combinations,
+      version: '1.0',
+      config: {}
     }
   }
   save() {
-    this.props.saveConfig(this.state.combinations);
+    this.props.saveConfig(this.state);
     this.props.selectCombination(0);
-    localStorage.setItem('products', JSON.stringify(this.state.combinations));
+    //localStorage.setItem('settings', JSON.stringify(this.state.combinations));
 
   }
 
@@ -22,6 +25,9 @@ class Settings extends Component {
     const pro = this.state.combinations.slice();
       if (typeof pro[data.data_index] !== undefined ) {
         pro[data.data_index][data.data_article][data.name] = data.value;
+        if (data.name === 'itemno'){
+          pro[data.data_index][data.data_article].isValid = queryReducer.isValidItem(data.value);
+        }
         this.setState({
           combinations: pro
         })
@@ -30,18 +36,15 @@ class Settings extends Component {
 
   addCombination = () =>{
     this.setState({
-      combinations: this.state.combinations.concat([
+      combinations: this.state.combinations.concat([[
         {
-          bed:'',
-          mattress: '',
-          mattress_qty: 1,
-          slat: '',
-          slat_qty: 1,
-          extra: '',
-          extra_qty: 0
+          itemno:'',
+          qty: 1,
+          isValid: false
         }
-      ])
+      ]])
     });
+    console.log(this.state.combinations);
   }
 
   removeCombination = (name) => {
@@ -56,8 +59,20 @@ class Settings extends Component {
 
   addArticle = (index) => {
     var dup_array = this.state.combinations.slice();
-    dup_array[index].push({itemno:'', qty:0});
+    dup_array[index].push({itemno:'', qty: 1, isValid: false});
     this.setState({combinations: dup_array});
+  }
+
+  removeArticle = (combination, article) => {
+    var dup_array = this.state.combinations.slice();
+    dup_array[combination].splice(article, 1);
+    this.setState({combinations: dup_array});
+  }
+  removeCombination = (combination) => {
+    var _comb = this.state.combinations;
+    _comb.splice(combination, 1);
+    this.setState({combinations: _comb});
+
   }
 
   render() {
@@ -80,7 +95,8 @@ class Settings extends Component {
                   data_index = {index}
                   onChange = {this.handleChange}
                   placeholder = 'Product Number'
-                  value = {article.itemno} />
+                  value = {article.itemno}
+                  error = {!article.isValid} />
                   <Input
                   name = 'qty'
                   data_article = {i}
@@ -88,17 +104,23 @@ class Settings extends Component {
                   onChange = {this.handleChange}
                   placeholder = 'Quantity'
                   value = {article.qty} />
+                  <Button content='Remove Article' onClick={() => this.removeArticle(index, i)}/>
                 </Card.Content>
                 );
               })}
 
               <Card.Content extra>
                 <Button content='Add article' onClick={() => this.addArticle(index)}/>
+                <Button content='Remove Combination' onClick={() => this.removeCombination(index)}/>
               </Card.Content>
             </Card>
           )
         })}
         </Card.Group>
+        <Button content='Add Combination' onClick={() => this.addCombination()}/>
+        <Button onClick={() => this.save()}>Save</Button>
+        <Button onClick={() => this.props.onLogOut()}>Log out</Button>
+
       </div>
     )
   }
@@ -114,10 +136,12 @@ const mapDispatchToProps = dispatch => {
       dispatch(actions.logInOut(false));
       dispatch(actions.accessSetup(false))
     },
-    saveConfig: (combinations) => {
-      dispatch(actions.saveConfig(combinations));
-      dispatch(actions.configLoaded(combinations));
-      dispatch(actions.itemsLoaded(combinations));
+    saveConfig: (settings) => {
+      dispatch(actions.saveConfig(settings.combinations));
+      dispatch(actions.configLoaded(settings.combinations));
+      dispatch(actions.itemsLoaded(settings.combinations));
+      dispatch(actions.settingsLoaded(settings.config));
+      localStorage.setItem('settings', JSON.stringify(settings));
     },
     selectCombination: (combination) => {
       dispatch(actions.selectCombination(combination));
