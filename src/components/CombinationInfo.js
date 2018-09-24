@@ -7,7 +7,7 @@ const _calculatePrice = (combination, products) => {
   return combination.reduce((accumulator, currentValue) => {
     let price = accumulator;
     let i_price = 0;
-    if (currentValue.isValid){
+    if (currentValue.isValid && products.hasOwnProperty(currentValue.itemno)){
       i_price = products[currentValue.itemno].RetailItemCommPriceList.RetailItemCommPrice.Price * currentValue.qty;
     }
     return price + i_price;
@@ -90,6 +90,7 @@ class CombinationInfo extends React.Component {
         <Table singleLine basic='very'>
        <Table.Body>
        {combination.map((item, key)=>{
+         if (!products.hasOwnProperty(item.itemno)) return null;
          return(
            <Table.Row key={key}>
              {item.isValid ? <Table.Cell textAlign="right">{item.qty}x</Table.Cell> : null}
