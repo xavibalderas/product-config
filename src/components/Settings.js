@@ -17,6 +17,7 @@ class Settings extends Component {
   save() {
     this.props.saveConfig(this.state);
     this.props.selectCombination(0);
+    alert("Saved");
     //localStorage.setItem('settings', JSON.stringify(this.state.combinations));
 
   }
