@@ -1,6 +1,8 @@
 import React from 'react';
 import { Header , Segment, Button, Table, Icon, Modal} from 'semantic-ui-react';
 import './Header.css';
+import queryReducer from '../tools/queryReducer';
+
 
 const _calculatePrice = (combination, products) => {
 
@@ -64,8 +66,8 @@ class CombinationInfo extends React.Component {
           <Header.Subheader>{products[main].ItemMeasureReferenceTextMetric}</Header.Subheader>
         </Header>
 
-        <h1 className="product_price">{products[main].RetailItemCommPriceList.RetailItemCommPrice.Price}</h1>
-        <p>Komplettpreis: {_calculatePrice(combination, products)} <Icon name="question" onClick={this.handleOpenPrice}/></p>
+        <h1 className="product_price">{queryReducer.formatPrice(products[main].RetailItemCommPriceList.RetailItemCommPrice.Price)}</h1>
+        <p>Komplettpreis: {queryReducer.formatPrice(_calculatePrice(combination, products))} <Icon name="question" onClick={this.handleOpenPrice}/></p>
         {products[main].DesignerNameComm != null ? <p>Designed by: {products[main].DesignerNameComm}</p>:null}
         <p>{products[main].RetailItemCustomerBenefitSummaryText}</p>
 
@@ -95,13 +97,13 @@ class CombinationInfo extends React.Component {
            <Table.Row key={key}>
              {item.isValid ? <Table.Cell textAlign="right">{item.qty}x</Table.Cell> : null}
              {item.isValid ? <SubProductInfo icon={false} article={products[item.itemno]}/> : null}
-             {item.isValid ? <Table.Cell><h3>{products[item.itemno].RetailItemCommPriceList.RetailItemCommPrice.Price }</h3></Table.Cell> : null}
+             {item.isValid ? <Table.Cell><h3>{queryReducer.formatPrice(products[item.itemno].RetailItemCommPriceList.RetailItemCommPrice.Price) }</h3></Table.Cell> : null}
          </Table.Row>
          )
        })}
         <Table.Row>
           <Table.Cell></Table.Cell><Table.Cell textAlign="right"><h3>Komplettpreis</h3></Table.Cell>
-          <Table.Cell><h3>{_calculatePrice(combination, products)}</h3></Table.Cell>
+          <Table.Cell><h3>{queryReducer.formatPrice(_calculatePrice(combination, products))}</h3></Table.Cell>
         </Table.Row>
 
         </Table.Body>

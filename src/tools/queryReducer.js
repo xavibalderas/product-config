@@ -21,6 +21,25 @@ const queryReducer = {
     }, initial);
   },
 
+  formatPrice: (price) => {
+    if (price===undefined)
+      return '';
+    let _p = price.toString();
+    if (_p.trim() ==='' )
+      return '';
+
+    let _pos = _p.indexOf('.');
+    if (_pos === -1)
+      return price;
+
+    let _v = _p.substring(0, _pos);
+    let _c = _p.substring(_pos);
+    if (_c === '.00')
+      return _v + '.-';
+
+    return _p
+
+  },
 
   reduceCombinations: (combinations) => {
     return combinations.reduce((accumulator, currentValue)=>{

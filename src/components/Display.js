@@ -4,6 +4,8 @@ import MenuContainer from './MenuContainer';
 import { connect } from 'react-redux';
 import CombinationInfo from './CombinationInfo';
 import OptionsSelector from './OptionsSelector';
+import queryReducer from '../tools/queryReducer';
+
 
 
 const mapStateToProps = (state) => ({
@@ -43,7 +45,7 @@ class CarrierDisplay extends Component {
                         <Item.Content>
                           <Item.Header as='a'>Lieferservice</Item.Header>
                           <Item.Description>
-                            99.00
+                            {queryReducer.formatPrice('99.00')}
                           </Item.Description>
                         </Item.Content>
                       </Item>
