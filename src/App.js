@@ -6,7 +6,15 @@ import { connect } from 'react-redux';
 import { actions } from './store/actions';
 import { Container } from 'semantic-ui-react'
 import queryReducer from './tools/queryReducer';
+import ReactGA from 'react-ga';
+
 //import updater from '../tools/update';
+
+function initializeReactGA() {
+    ReactGA.initialize('UA-125590444-2');
+    ReactGA.pageview('/homepage');
+}
+
 
 class RootContainer extends Component{
 
@@ -14,6 +22,7 @@ class RootContainer extends Component{
     this.props.isFetchingSettings(true);
     this.updateOldSettings();
     const settings = localStorage.getItem('settings');
+    initializeReactGA();
 
     if (settings){
       const v_settings = JSON.parse(settings);

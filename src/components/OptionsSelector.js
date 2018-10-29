@@ -2,13 +2,31 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {Segment, Header, Card} from 'semantic-ui-react';
 import { actions } from '../store/actions';
+import ReactGA from 'react-ga';
+
 
 
 class CardCombination extends Component {
 
   handleCardClick = (e, {name}) => {
       this.props.selectCombination(name);
+      this.registerAction('combi_change');
   }
+
+  registerAction = (name) => {
+
+    switch (name) {
+      case 'combi_change':
+        ReactGA.event({
+          category: 'User',
+          action: 'Changed combination'
+        });
+        break;
+      default:
+    }
+  }
+
+
   render() {
 
     if (this.props.products[this.props.combination[0].itemno.toUpperCase()] === undefined) {

@@ -4,6 +4,7 @@ import gql from 'graphql-tag';
 import { Query } from "react-apollo";
 import AvailabilityDisplay from './AvailabilityDisplay'
 import queryReducer from '../tools/queryReducer';
+import ReactGA from 'react-ga';
 
 
 const hasReference = (element) => {
@@ -56,7 +57,31 @@ class MenuContainer  extends Component {
   state = { info: false, stock: false, email: false }
   handleItemClick = (e, {name}) => {
     this.setState({[name]: true })
+    this.registerAction(name);
   }
+
+  registerAction = (name) => {
+
+    switch (name) {
+      case 'info':
+        ReactGA.event({
+          category: 'User',
+          action: 'Check for product information'
+        });
+        break;
+
+      case 'stock':
+        ReactGA.event({
+          category: 'User',
+          action: 'Check for sales location'
+        });
+        break;
+
+      default:
+
+    }
+  }
+
 hideSidebar= ()=>{
   this.setState({ info: false, stock: false, email: false });
 }

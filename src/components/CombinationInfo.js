@@ -2,6 +2,7 @@ import React from 'react';
 import { Header , Segment, Button, Table, Icon, Modal} from 'semantic-ui-react';
 import './Header.css';
 import queryReducer from '../tools/queryReducer';
+import ReactGA from 'react-ga';
 
 
 const _calculatePrice = (combination, products) => {
@@ -44,8 +45,22 @@ class CombinationInfo extends React.Component {
     }
   }
 
+  registerAction = (name) => {
+
+    switch (name) {
+      case 'kompletpreis':
+        ReactGA.event({
+          category: 'User',
+          action: 'Open complete price information'
+        });
+        break;
+      default:
+    }
+  }
+
   handleOpenPrice = ()=>{
     this.setState({modalPrice: true});
+    this.registerAction('kompletpreis');
   }
 
     handleClosePrice = ()=>{
