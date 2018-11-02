@@ -7,6 +7,8 @@ import { actions } from './store/actions';
 import { Container } from 'semantic-ui-react'
 import queryReducer from './tools/queryReducer';
 import ReactGA from 'react-ga';
+import { instanceOf } from 'prop-types';
+import { withCookies, Cookies } from 'react-cookie';
 
 //import updater from '../tools/update';
 
@@ -18,14 +20,21 @@ function initializeReactGA() {
 
 class RootContainer extends Component{
 
+  static propTypes = {
+    cookies: instanceOf(Cookies).isRequired
+  };
+
+
   componentDidMount(){
+    const { cookies } = this.props;
     this.props.isFetchingSettings(true);
     this.updateOldSettings();
-    const settings = localStorage.getItem('settings');
+  //  const settings = localStorage.getItem('settings');
+    const settings = cookies.get('settings');
     initializeReactGA();
 
     if (settings){
-      const v_settings = JSON.parse(settings);
+      const v_settings = settings; //JSON.parse(settings);
       console.log(v_settings);
       this.props.settingsLoaded(v_settings.config);
       if (v_settings.combinations.length > 0){
@@ -111,4 +120,4 @@ const mapDispatchToProps = dispatch => {
 }
 
 const App = connect(mapStateToProps, mapDispatchToProps)(RootContainer);
-export default App
+export default withCookies(App);

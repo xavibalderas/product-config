@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { actions } from '../store/actions';
 import { Input, Form ,Radio, Button, Icon, Table, Grid, Card} from 'semantic-ui-react';
 import queryReducer from '../tools/queryReducer';
+import { withCookies } from 'react-cookie';
+
 
 class Settings extends Component {
   constructor(props){
@@ -17,6 +19,7 @@ class Settings extends Component {
   save() {
     this.props.saveConfig(this.state);
     this.props.selectCombination(0);
+    this.props.cookies.set('settings', this.state);
     alert("Saved");
     //localStorage.setItem('settings', JSON.stringify(this.state.combinations));
 
@@ -127,8 +130,9 @@ class Settings extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-    combinations: state.settings.combinations
+const mapStateToProps = (state, ownProps) => ({
+    combinations: state.settings.combinations,
+    cookies: ownProps.cookies
 });
 
 const mapDispatchToProps = dispatch => {
@@ -142,7 +146,7 @@ const mapDispatchToProps = dispatch => {
       dispatch(actions.configLoaded(settings.combinations));
       dispatch(actions.itemsLoaded(settings.combinations));
       dispatch(actions.settingsLoaded(settings.config));
-      localStorage.setItem('settings', JSON.stringify(settings));
+    //  localStorage.setItem('settings', JSON.stringify(settings));
     },
     selectCombination: (combination) => {
       dispatch(actions.selectCombination(combination));
@@ -151,4 +155,4 @@ const mapDispatchToProps = dispatch => {
 }
 
 const  SettingsContainer =  connect(mapStateToProps, mapDispatchToProps)(Settings);
-export default SettingsContainer
+export default withCookies(SettingsContainer);
