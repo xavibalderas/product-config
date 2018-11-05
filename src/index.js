@@ -8,6 +8,8 @@ import store from './store';
 import { ApolloProvider } from "react-apollo";
 import ApolloClient from "apollo-boost";
 import './semantic/dist/semantic.min.css';
+import { CookiesProvider } from 'react-cookie';
+
 
 
 const URI_API = process.env.REACT_APP_GRAPHCMS_API;
@@ -18,9 +20,11 @@ const client = new ApolloClient({
 
 })
 ReactDOM.render(
+  <CookiesProvider>
   <ApolloProvider client={client}>
     <Provider store={store}>
     <App />
     </Provider>
   </ApolloProvider>
+  </CookiesProvider>
     , document.getElementById('root'));
