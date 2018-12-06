@@ -11,6 +11,7 @@ data.items:   stores the unique products numbers for each of the articles added 
 */
 const initialStates = {
   settings: {
+
     loggedIn: false,
     accessSetup: false,
     type: 'bed',
@@ -23,7 +24,9 @@ const initialStates = {
         }
       ]
     ],
-    config: {},
+    config: {
+      diplayID: ''
+    },
     loadingConfig: false,
     isFetching: false,
     version: '1.0'
@@ -61,6 +64,11 @@ export const settings = (state = initialStates.settings, action) => {
       return Object.assign({}, state, {
         combinations: action.combinations
       });
+
+    case TYPES.SAVE_SETTINGS:
+        return Object.assign({}, state, {
+          config: action.config
+        });
 
     default:
       return state

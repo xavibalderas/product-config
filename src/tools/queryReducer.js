@@ -22,7 +22,7 @@ const queryReducer = {
   },
 
   formatPrice: (price) => {
-    if (price===undefined)
+    if (price===undefined || price==null)
       return '';
     let _p = price.toString();
     if (_p.trim() ==='' )

@@ -9,6 +9,10 @@ import queryReducer from './tools/queryReducer';
 import ReactGA from 'react-ga';
 import { instanceOf } from 'prop-types';
 import { withCookies, Cookies } from 'react-cookie';
+import gql from 'graphql-tag';
+import { Mutation } from "react-apollo";
+import ApolloClient from "apollo-boost";
+
 
 //import updater from '../tools/update';
 
@@ -16,6 +20,30 @@ function initializeReactGA() {
     ReactGA.initialize('UA-125590444-2');
     ReactGA.pageview('/homepage');
 }
+
+/* ejemplo:
+mutation {
+  createCombination(
+    data: {
+      display: "dsadsadasdasdasdds"
+      settings: "{\"23\": 54}"
+    }
+  ) {
+    id
+  }
+}
+https://graphql.org/graphql-js/mutations-and-input-types/
+
+*/
+
+
+const ADD_SETTINGS = gql`
+  mutation createCombination($data: CombinationCreateInput!) {
+    createCombination(data: $data) {
+      id
+    }
+  }
+`;
 
 
 class RootContainer extends Component{
@@ -29,13 +57,14 @@ class RootContainer extends Component{
     const { cookies } = this.props;
     this.props.isFetchingSettings(true);
     this.updateOldSettings();
-  //  const settings = localStorage.getItem('settings');
-    const settings = cookies.get('settings');
+    const settings = localStorage.getItem('settings');
+    //const settings = cookies.get('settings');
     initializeReactGA();
 
     if (settings){
-      const v_settings = settings; //JSON.parse(settings);
-      console.log(v_settings);
+
+      const v_settings = JSON.parse(settings);//settings; //JSON.parse(settings);
+      
       this.props.settingsLoaded(v_settings.config);
       if (v_settings.combinations.length > 0){
         this.props.configLoaded(v_settings.combinations);
@@ -46,6 +75,7 @@ class RootContainer extends Component{
     }
     this.props.isFetchingSettings(false);
   }
+
 
   updateOldSettings(){
     const combinations = localStorage.getItem('products');

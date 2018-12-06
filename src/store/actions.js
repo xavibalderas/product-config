@@ -8,13 +8,16 @@ export const TYPES = {
   LOADING_CONFIG: 'LOAD_CONFIG',
   CONFIG_LOADED: 'CONFIG_LOADED',
   ITEMS_LOADED: 'ITEMS_LOADED',
-  SETTINGS_LOADED: 'SETTINGS_LOADED'
+  SETTINGS_LOADED: 'SETTINGS_LOADED',
+  SAVE_SETTINGS: 'SAVE_SETTINGS'
 }
 
 export const actions = {
   accessSetup: (bool) => ({ type: TYPES.ACCESS_SETUP, bool }),
   logInOut: (bool) => ({ type: TYPES.LOG_IN_OUT, bool }),
   saveConfig: (products) => ({ type: TYPES.SAVE_CONFIG, products }),
+  saveSettings: (config) => ({ type: TYPES.SAVE_SETTINGS, config }),
+
   requestProducts: (products) => ({ type: TYPES.REQUEST_PRODUCTS, products }),
   receiveProducts: (productsInfo) => ({ type: TYPES.RECEIVE_PRODUCTS, productsInfo }),
   loadingConfig: (bool) => ({ type: TYPES.LOADING_CONFIG, bool }),

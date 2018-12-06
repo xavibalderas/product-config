@@ -4,25 +4,58 @@ import { actions } from '../store/actions';
 import { Input, Form ,Radio, Button, Icon, Table, Grid, Card} from 'semantic-ui-react';
 import queryReducer from '../tools/queryReducer';
 import { withCookies } from 'react-cookie';
-
+import gql from 'graphql-tag';
+import { Mutation } from "react-apollo";
+import ApolloClient from "apollo-boost";
+const ADD_SETTINGS = gql`
+  mutation createCombination($data: CombinationCreateInput!) {
+    createCombination(data: $data) {
+      id
+    }
+  }
+`;
 
 class Settings extends Component {
   constructor(props){
     super(props);
+    console.log(props);
     this.combinations = props.combinations;
     this.state = {
       combinations: props.combinations,
       version: '1.0',
-      config: {}
+      config: {
+        displayID: props.displayID
+      }
     }
   }
+
   save() {
     this.props.saveConfig(this.state);
     this.props.selectCombination(0);
-    this.props.cookies.set('settings', this.state);
+  //  this.props.cookies.set('settings', this.state);
     alert("Saved");
-    //localStorage.setItem('settings', JSON.stringify(this.state.combinations));
+    localStorage.setItem('settings', JSON.stringify(this.state));
+    this.uploadSettings(this.state.combinations);
 
+  }
+
+  uploadSettings= (settings) =>{
+    const client = new ApolloClient({
+          //uri: 'https://graphqlserver-productsinfo.herokuapp.com/'
+          uri: 'https://api-euwest.graphcms.com/v1/cjj5tfbui004n01g883gezq5k/master'
+          //uri: URI_API
+    });
+    console.log(client);
+    client.mutate({
+      mutation: ADD_SETTINGS,
+      variables: {
+        data: {
+          display: this.state.config.displayID,
+          settings: settings
+        }
+      }
+    }).then(result => { console.log(result) })
+      .catch(error => { console.log(error) });
   }
 
   handleChange = (e, data) => {
@@ -36,6 +69,16 @@ class Settings extends Component {
           combinations: pro
         })
       }
+  }
+
+  handleChangeID = (e, data) => {
+    console.log(data.value);
+        this.setState({
+          config:{
+              displayID:  data.value
+          }
+        })
+
   }
 
   addCombination = () =>{
@@ -80,8 +123,15 @@ class Settings extends Component {
   }
 
   render() {
+    console.log(this.state);
     return(
       <div>
+      <Input
+      name = 'displayId'
+      onChange = {this.handleChangeID}
+      placeholder = 'Product Number'
+      value = {this.state.config.displayID}
+       />
         <Card.Group>
         {this.state.combinations.map((combination, index)=>{
           return (
@@ -132,6 +182,7 @@ class Settings extends Component {
 
 const mapStateToProps = (state, ownProps) => ({
     combinations: state.settings.combinations,
+    displayID: state.settings.config.displayID,
     cookies: ownProps.cookies
 });
 
@@ -143,6 +194,7 @@ const mapDispatchToProps = dispatch => {
     },
     saveConfig: (settings) => {
       dispatch(actions.saveConfig(settings.combinations));
+      dispatch(actions.saveSettings(settings.config));
       dispatch(actions.configLoaded(settings.combinations));
       dispatch(actions.itemsLoaded(settings.combinations));
       dispatch(actions.settingsLoaded(settings.config));
