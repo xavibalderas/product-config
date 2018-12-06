@@ -35,7 +35,7 @@ class Settings extends Component {
   //  this.props.cookies.set('settings', this.state);
     alert("Saved");
     localStorage.setItem('settings', JSON.stringify(this.state));
-    this.uploadSettings(this.state.combinations);
+    this.uploadSettings(this.state);
 
   }
 
