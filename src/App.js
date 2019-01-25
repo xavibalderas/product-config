@@ -13,6 +13,20 @@ import gql from 'graphql-tag';
 import { Mutation } from "react-apollo";
 import ApolloClient from "apollo-boost";
 
+const GET_SETTINGS = gql`
+query display($display: String!) {
+  combinations(
+    first: 1,
+    orderBy: updatedAt_DESC,
+    where: {
+      display: $display
+    }
+  ){
+    settings
+  }
+}
+`;
+
 
 //import updater from '../tools/update';
 
@@ -21,29 +35,6 @@ function initializeReactGA() {
     ReactGA.pageview('/homepage');
 }
 
-/* ejemplo:
-mutation {
-  createCombination(
-    data: {
-      display: "dsadsadasdasdasdds"
-      settings: "{\"23\": 54}"
-    }
-  ) {
-    id
-  }
-}
-https://graphql.org/graphql-js/mutations-and-input-types/
-
-*/
-
-
-const ADD_SETTINGS = gql`
-  mutation createCombination($data: CombinationCreateInput!) {
-    createCombination(data: $data) {
-      id
-    }
-  }
-`;
 
 
 class RootContainer extends Component{
@@ -57,23 +48,59 @@ class RootContainer extends Component{
     const { cookies } = this.props;
     this.props.isFetchingSettings(true);
     this.updateOldSettings();
-    const settings = localStorage.getItem('settings');
-    //const settings = cookies.get('settings');
-    initializeReactGA();
+    //const settings = localStorage.getItem('settings');
+    const displayID = cookies.get('displayID');
 
-    if (settings){
-
-      const v_settings = JSON.parse(settings);//settings; //JSON.parse(settings);
-      
-      this.props.settingsLoaded(v_settings.config);
-      if (v_settings.combinations.length > 0){
-        this.props.configLoaded(v_settings.combinations);
-        this.props.itemsLoaded(v_settings.combinations);
-        this.props.selectCombination(0);
-      }
-
+    if (displayID){
+      this.loadRemoteSettings(displayID);
     }
-    this.props.isFetchingSettings(false);
+    console.log(displayID);
+    initializeReactGA();
+    //
+    // if (settings){
+    //
+    //   const v_settings = JSON.parse(settings);//settings; //JSON.parse(settings);
+    //
+    //   this.props.settingsLoaded(v_settings.config);
+    //   if (v_settings.combinations.length > 0){
+    //     this.props.configLoaded(v_settings.combinations);
+    //     this.props.itemsLoaded(v_settings.combinations);
+    //     this.props.selectCombination(0);
+    //   }
+    //
+    // }
+    // this.props.isFetchingSettings(false);
+  }
+
+  loadRemoteSettings(id){
+
+    const client = new ApolloClient({
+          //uri: 'https://graphqlserver-productsinfo.herokuapp.com/'
+          uri: 'https://api-euwest.graphcms.com/v1/cjj5tfbui004n01g883gezq5k/master'
+          //uri: URI_API
+    });
+    console.log(client);
+    client.query({
+      query: GET_SETTINGS,
+      variables: {
+        display: id
+      }
+    }).then((result) => {
+        const _c = result.data.combinations;
+        if (result.data.combinations.length > 0){
+          const _d = _c[0];
+          const settings = _d.settings;
+          this.props.settingsLoaded(settings.config);
+          if (settings.combinations.length > 0){
+            this.props.configLoaded(settings.combinations);
+            this.props.itemsLoaded(settings.combinations);
+            this.props.selectCombination(0);
+          }
+          this.props.isFetchingSettings(false);
+        }
+
+    })
+      .catch(error => { console.log(error) });
   }
 
 

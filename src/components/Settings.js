@@ -15,6 +15,20 @@ const ADD_SETTINGS = gql`
   }
 `;
 
+const GET_SETTINGS = gql`
+query display($display: String!) {
+  combinations(
+    first: 1,
+    orderBy: updatedAt_DESC,
+    where: {
+      display: $display
+    }
+  ){
+    settings
+  }
+}
+`;
+
 class Settings extends Component {
   constructor(props){
     super(props);
@@ -32,7 +46,8 @@ class Settings extends Component {
   save() {
     this.props.saveConfig(this.state);
     this.props.selectCombination(0);
-  //  this.props.cookies.set('settings', this.state);
+    this.props.cookies.set('displayID', this.state.config.displayID);
+    console.log(this.state);
     alert("Saved");
     localStorage.setItem('settings', JSON.stringify(this.state));
     this.uploadSettings(this.state);
@@ -122,6 +137,37 @@ class Settings extends Component {
 
   }
 
+  loadConfig = () => {
+    console.log(this.state);
+    const client = new ApolloClient({
+          //uri: 'https://graphqlserver-productsinfo.herokuapp.com/'
+          uri: 'https://api-euwest.graphcms.com/v1/cjj5tfbui004n01g883gezq5k/master'
+          //uri: URI_API
+    });
+    console.log(client);
+    client.query({
+      query: GET_SETTINGS,
+      variables: {
+        display: this.state.config.displayID
+      }
+    }).then((result) => {
+        const _c = result.data.combinations;
+        if (result.data.combinations.length > 0){
+          const _d = _c[0];
+          const settings = _d.settings;
+          console.log(settings);
+          //this.props.settingsLoaded(settings.config);
+          if (settings.combinations.length > 0){
+            this.setState({combinations: settings.combinations});
+            console.log(this.props);
+            console.log(this.state);
+          }
+        }
+
+    })
+      .catch(error => { console.log(error) });
+  }
+
   render() {
     console.log(this.state);
     return(
@@ -174,6 +220,8 @@ class Settings extends Component {
         <Button content='Add Combination' onClick={() => this.addCombination()}/>
         <Button onClick={() => this.save()}>Save</Button>
         <Button onClick={() => this.props.onLogOut()}>Log out</Button>
+        <Button content='Load config' onClick={() => this.loadConfig()}/>
+
 
       </div>
     )
@@ -202,7 +250,11 @@ const mapDispatchToProps = dispatch => {
     },
     selectCombination: (combination) => {
       dispatch(actions.selectCombination(combination));
-    }
+    },
+    configLoaded: (combinations) => dispatch(actions.configLoaded(combinations)),
+    settingsLoaded: (settings) => dispatch(actions.settingsLoaded(settings)),
+    itemsLoaded: (combinations) => dispatch(actions.itemsLoaded(combinations)),
+
   }
 }
 
