@@ -65,7 +65,7 @@ class RootContainer extends Component{
               // acknowledge QuotaExceededError only if there's something already stored
               storage.length !== 0;
       }
-  },
+  };
 
   componentDidMount(){
     const { cookies } = this.props;

@@ -65,7 +65,7 @@ class Settings extends Component {
             // acknowledge QuotaExceededError only if there's something already stored
             storage.length !== 0;
     }
-},
+}
 
   save() {
     this.props.saveConfig(this.state);
