@@ -2,6 +2,9 @@
   "name": "product-config",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+  "node": "10.13.0"
+},
   "dependencies": {
     "ajv": "^6.5.3",
     "apollo-boost": "^0.1.15",
