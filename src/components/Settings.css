@@ -1,0 +1,21 @@
+#settings-group  .settings-card{
+  background-color: #eee;
+  border-width: 0px;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+#settings-group {
+  margin-top: 10px;
+}
+#setting-screen{
+  font-size: 0.8em;
+}
+
+#setting-screen  .settings-element{
+  margin: 15px 0;
+}
+
+#settings-group .small{
+  font-size: 0.8em !important;
+}

@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { actions } from '../store/actions';
-import { Input, Form ,Radio, Button, Icon, Table, Grid, Card} from 'semantic-ui-react';
+import { Input, Form ,Radio, Button, Divider,Icon, Table, Grid, Card, Container} from 'semantic-ui-react';
 import queryReducer from '../tools/queryReducer';
 import { withCookies } from 'react-cookie';
 import gql from 'graphql-tag';
 import { Mutation } from "react-apollo";
 import ApolloClient from "apollo-boost";
+import './Settings.css';
+
 const ADD_SETTINGS = gql`
   mutation createCombination($data: CombinationCreateInput!) {
     createCombination(data: $data) {
@@ -155,12 +157,20 @@ class Settings extends Component {
   }
 
   removeArticle = (combination, article) => {
-    var dup_array = this.state.combinations.slice();
-    dup_array[combination].splice(article, 1);
+    console.log(combination);
+    console.log(article);
+    console.log(this.state.combinations);
+    var dup_array = JSON.parse(JSON.stringify(this.state.combinations));//this.state.combinations.slice();
+    console.log(dup_array[combination]);
+    const _a = dup_array[combination].splice(article, 1);
+    //delete dup_array[combination][article];
+    console.log(_a);
+
     this.setState({combinations: dup_array});
   }
   removeCombination = (combination) => {
-    var _comb = this.state.combinations;
+    var _comb = JSON.parse(JSON.stringify(this.state.combinations));//this.state.combinations.slice();
+//this.state.combinations;
     _comb.splice(combination, 1);
     this.setState({combinations: _comb});
 
@@ -200,56 +210,89 @@ class Settings extends Component {
   render() {
     console.log(this.state);
     return(
-      <div>
+      <div id="setting-screen">
       <Input
       name = 'displayId'
       onChange = {this.handleChangeID}
-      placeholder = 'Product Number'
+      placeholder = 'Display Name'
       value = {this.state.config.displayID}
+      label = 'Display Name'
+      labelPosition = 'left'
+      size = 'tiny'
        />
-        <Card.Group>
+
+        <Card.Group id="settings-group" itemsPerRow={3}>
         {this.state.combinations.map((combination, index)=>{
           return (
-            <Card key={index}>
+            <Card className="settings-card" key={index}>
               <Card.Content>
-                <Card.Header>Combination {index}</Card.Header>
+                <Card.Header>
+                <Icon name='trash' color="red" floated="right" onClick={() => this.removeCombination(index)}/>
+                   Combination {index}
+                </Card.Header>
               </Card.Content>
+
 
               {combination.map((article, i)=>{
                 return (
-                <Card.Content key = {i}>
+                <Card.Content className="settings-card-content" key = {i}>
+                <Grid columns={5}>
+                  <Grid.Row>
+                  <Grid.Column width={1}>
+                    <Icon color = 'red' name='trash' onClick={() => this.removeArticle(index, i)}/>
+                  </Grid.Column>
+                  <Grid.Column width={4}>
                   <Input
                   name = 'itemno'
+                  label = "Article"
                   data_article = {i}
                   data_index = {index}
                   onChange = {this.handleChange}
                   placeholder = 'Product Number'
                   value = {article.itemno}
-                  error = {!article.isValid} />
+                  error = {!article.isValid} /><br/>
                   <Input
                   name = 'qty'
+                  label = 'Qty'
                   data_article = {i}
                   data_index = {index}
                   onChange = {this.handleChange}
                   placeholder = 'Quantity'
                   value = {article.qty} />
-                  <Button content='Remove Article' onClick={() => this.removeArticle(index, i)}/>
+                  </Grid.Column>
+                  </Grid.Row>
+
+                  </Grid>
+
                 </Card.Content>
                 );
               })}
 
               <Card.Content extra>
-                <Button content='Add article' onClick={() => this.addArticle(index)}/>
-                <Button content='Remove Combination' onClick={() => this.removeCombination(index)}/>
+                <Button color="green" size = "small" onClick={() => this.addArticle(index)}>
+                  <Icon name="plus"/> Add article
+                </Button>
               </Card.Content>
             </Card>
           )
         })}
         </Card.Group>
-        <Button content='Add Combination' onClick={() => this.addCombination()}/>
-        <Button onClick={() => this.save()}>Save</Button>
-        <Button onClick={() => this.props.onLogOut()}>Log out</Button>
-        <Button content='Load config' onClick={() => this.loadConfig()}/>
+         <Container className="settings-element" fluid>
+
+          <Button onClick={() => this.addCombination()}>
+            <Icon name='plus'/> Add Combination
+          </Button>
+          <Divider />
+          <Button color="green" onClick={() => this.save()}>
+            <Icon name="save"/>Save
+          </Button>
+          <Button onClick={() => this.props.onLogOut()}>
+            <Icon name="log out"/>Log out
+          </Button>
+          <Button basic onClick={() => this.loadConfig()}>
+            <Icon name="cloud download"/>Load from remote
+          </Button>
+        </Container>
 
 
       </div>
