@@ -29,12 +29,40 @@ class Settings extends Component {
     }
   }
 
+  storageAvailable() {
+      try {
+          var storage = window['localStorage'],
+              x = '__storage_test__';
+          storage.setItem(x, x);
+          storage.removeItem(x);
+          return true;
+      }
+      catch(e) {
+          return e instanceof DOMException && (
+              // everything except Firefox
+              e.code === 22 ||
+              // Firefox
+              e.code === 1014 ||
+              // test name field too, because code might not be present
+              // everything except Firefox
+              e.name === 'QuotaExceededError' ||
+              // Firefox
+              e.name === 'NS_ERROR_DOM_QUOTA_REACHED') &&
+              // acknowledge QuotaExceededError only if there's something already stored
+              storage.length !== 0;
+      }
+  }
+
   save() {
     this.props.saveConfig(this.state);
     this.props.selectCombination(0);
-  //  this.props.cookies.set('settings', this.state);
     alert("Saved");
-    localStorage.setItem('settings', JSON.stringify(this.state));
+    if(this.storageAvailable()){
+      localStorage.setItem('settings', JSON.stringify(this.state));
+    }else {
+      this.props.cookies.set('settings', this.state);
+    }
+
     this.uploadSettings(this.state);
 
   }

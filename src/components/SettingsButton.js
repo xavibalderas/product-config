@@ -12,7 +12,7 @@ class SettingsButton extends React.Component{
     this.state= {
       modalOpen:false,
       combination: '',
-      access: process.env.REACT_APP_SETTINGS_PASSWORD
+      access:  process.env.REACT_APP_SETTINGS_PASSWORD
     };
   };
 
