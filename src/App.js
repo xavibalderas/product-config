@@ -47,7 +47,7 @@ class RootContainer extends Component{
   componentDidMount(){
     const { cookies } = this.props;
     this.props.isFetchingSettings(true);
-    this.updateOldSettings();
+    //this.updateOldSettings();
     //const settings = localStorage.getItem('settings');
     const displayID = cookies.get('displayID');
 
