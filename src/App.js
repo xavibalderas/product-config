@@ -43,15 +43,43 @@ class RootContainer extends Component{
     cookies: instanceOf(Cookies).isRequired
   };
 
+  storageAvailable() {
+      try {
+          var storage = window['localStorage'],
+              x = '__storage_test__';
+          storage.setItem(x, x);
+          storage.removeItem(x);
+          return true;
+      }
+      catch(e) {
+          return e instanceof DOMException && (
+              // everything except Firefox
+              e.code === 22 ||
+              // Firefox
+              e.code === 1014 ||
+              // test name field too, because code might not be present
+              // everything except Firefox
+              e.name === 'QuotaExceededError' ||
+              // Firefox
+              e.name === 'NS_ERROR_DOM_QUOTA_REACHED') &&
+              // acknowledge QuotaExceededError only if there's something already stored
+              storage.length !== 0;
+      }
+  },
 
   componentDidMount(){
     const { cookies } = this.props;
     this.props.isFetchingSettings(true);
     //this.updateOldSettings();
     //const settings = localStorage.getItem('settings');
-    const displayID = cookies.get('displayID');
+    var displayID = '';
+    if (this.storageAvailable()){
+      displayID = localStorage.getItem('displayID');
+    }else {
+      displayID = cookies.get('displayID');
+    }
 
-    if (displayID){
+    if (displayID !== ''){
       this.loadRemoteSettings(displayID);
     }
     console.log(displayID);
