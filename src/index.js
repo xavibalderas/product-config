@@ -18,7 +18,6 @@ const URI_API = process.env.REACT_APP_GRAPHCMS_API;
 
 const client = new ApolloClient({
       //uri: 'https://graphqlserver-productsinfo.herokuapp.com/'
-
       uri: URI_API
 
 })
