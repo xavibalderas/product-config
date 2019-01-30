@@ -19,7 +19,8 @@ class CardCombination extends Component {
       case 'combi_change':
         ReactGA.event({
           category: 'User',
-          action: 'Changed combination'
+          action: 'Changed combination',
+          label: this.props.display
         });
         break;
       default:
@@ -71,7 +72,8 @@ const hasReference = (element) => {
 const mapStateToProps = (state) => ({
   combinations: state.settings.combinations,
   items: state.data.items,
-  selectedCombination: state.data.selectedCombination
+  selectedCombination: state.data.selectedCombination,
+  display: state.settings.config.displayID
 });
 
 const RootOptionsSelector = ({combinations, items, selectedCombination, products }) => (

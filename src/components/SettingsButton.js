@@ -12,7 +12,7 @@ class SettingsButton extends React.Component{
     this.state= {
       modalOpen:false,
       combination: '',
-      access: process.env.REACT_APP_SETTINGS_PASSWORD
+      access:process.env.REACT_APP_SETTINGS_PASSWORD
     };
   };
 
@@ -53,6 +53,9 @@ class SettingsButton extends React.Component{
          <Button onClick={() => this.setState({combination: this.state.combination + '0'})}>0</Button>
          </Segment>
          </Modal.Content>
+         <p>
+         v.0.2
+         </p>
 
        </Modal>
     )

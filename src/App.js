@@ -30,9 +30,9 @@ query display($display: String!) {
 
 //import updater from '../tools/update';
 
-function initializeReactGA() {
+function initializeReactGA(display) {
     ReactGA.initialize('UA-125590444-2');
-    ReactGA.pageview('/homepage');
+    ReactGA.pageview(display);
 }
 
 
@@ -83,7 +83,7 @@ class RootContainer extends Component{
       this.loadRemoteSettings(displayID);
     }
     console.log(displayID);
-    initializeReactGA();
+    initializeReactGA(displayID);
     //
     // if (settings){
     //
