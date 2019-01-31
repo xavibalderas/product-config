@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import CombinationInfo from './CombinationInfo';
 import OptionsSelector from './OptionsSelector';
 import queryReducer from '../tools/queryReducer';
+import ServicesContainer from './Services';
 
 
 
@@ -20,7 +21,6 @@ class CarrierDisplay extends Component {
 
   render() {
     const combination = this.props.combinations[this.props.selectedCombination];
-    console.log(combination);
         return (
           <Grid>
           <Grid.Row>
@@ -40,16 +40,7 @@ class CarrierDisplay extends Component {
                 Du kannst alles selber machen, du musst aber nicht
                 </Header>
                 <Item.Group>
-                      <Item>
-                        <Item.Image size='tiny' src='/images/delivery.jpg' />
-                        <Item.Content>
-                          <Item.Header as='a'>Lieferservice</Item.Header>
-                          <Item.Description>
-                            {queryReducer.formatPrice('99.00')}
-                          </Item.Description>
-                        </Item.Content>
-                      </Item>
-
+                      <ServicesContainer combination={combination} products = {this.props.products}/>
                   </Item.Group>
                 </Segment>
               </Grid.Column>
