@@ -6,6 +6,7 @@ import CombinationInfo from './CombinationInfo';
 import OptionsSelector from './OptionsSelector';
 import queryReducer from '../tools/queryReducer';
 import ServicesContainer from './Services';
+import Benefits from './Benefits'
 
 
 
@@ -39,19 +40,14 @@ class CarrierDisplay extends Component {
                 <Header as="h5">
                 Du kannst alles selber machen, du musst aber nicht
                 </Header>
-                <Item.Group>
                       <ServicesContainer combination={combination} products = {this.props.products}/>
-                  </Item.Group>
                 </Segment>
               </Grid.Column>
               </Grid.Row>
-
-
-
             </Grid>
             </Grid.Column>
           </Grid.Row>
-
+            <Benefits />
           </Grid>
 
 

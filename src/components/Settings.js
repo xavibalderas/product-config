@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { actions } from '../store/actions';
-import { Input, Form ,Radio, Button, Divider,Icon, Table, Grid, Card, Container} from 'semantic-ui-react';
+import { Input, Form ,Radio, Button, Divider,Icon, Table, Grid, Card, Container, Checkbox} from 'semantic-ui-react';
 import queryReducer from '../tools/queryReducer';
 import { withCookies } from 'react-cookie';
 import gql from 'graphql-tag';
@@ -36,13 +36,27 @@ class Settings extends Component {
     super(props);
     console.log(props);
     this.combinations = props.combinations;
+    console.log(props);
+    let _config =  Object.assign({}, props.config);
+    if (_config.new === undefined)
+      _config.new = false;
+
+    if (_config.guarantee === undefined)
+        _config.guarantee = false;
+
     this.state = {
       combinations: props.combinations,
       version: '1.0',
-      config: {
-        displayID: props.displayID
-      }
+      config: _config
     }
+
+    if (props.services=== undefined){
+      this.state.config.services=['TransportComponent'];
+    }
+
+
+
+
   }
 
   storageAvailable() {
@@ -119,10 +133,10 @@ class Settings extends Component {
 
   handleChangeID = (e, data) => {
     console.log(data.value);
+    const _d = Object.assign({}, this.state.config);
+    _d.displayID = data.value;
         this.setState({
-          config:{
-              displayID:  data.value
-          }
+          config:_d
         })
 
   }
@@ -173,6 +187,38 @@ class Settings extends Component {
 //this.state.combinations;
     _comb.splice(combination, 1);
     this.setState({combinations: _comb});
+
+  }
+  toogleNew = () =>{
+    const _d = Object.assign({}, this.state.config);
+    _d.new = !_d.new;
+    this.setState({
+      config: _d
+    });
+  }
+  toogleGua = () =>{
+    const _d = Object.assign({}, this.state.config);
+    _d.guarantee = !_d.guarantee;
+    this.setState({
+      config: _d
+    });
+  }
+  toggleService = (service) => {
+    let _s = this.state.config.services.slice();
+    const _p = _s.indexOf(service);
+
+    if (_p !== -1 ){
+        _s.splice(_p,1);
+    }else{
+      _s.push(service);
+    }
+
+    const _d = Object.assign({}, this.state.config);
+    _d.services = _s;
+    this.setState({
+      config: _d
+    });
+
 
   }
 
@@ -276,6 +322,25 @@ class Settings extends Component {
             </Card>
           )
         })}
+          <Card className="settings-card">
+              <Card.Content>
+                <Card.Header>
+                   Configuration
+                </Card.Header>
+              </Card.Content>
+              <Card.Content>
+                <h3>Services</h3>
+                <Checkbox label="Transport" checked={this.state.config.services.indexOf('TransportComponent')!==-1} onClick={() => this.toggleService('TransportComponent')} /><br/>
+                <Checkbox label="Assembly Continental Bed" checked={this.state.config.services.indexOf('AssemblycontComponent')!==-1} onClick={() => this.toggleService('AssemblycontComponent')} />
+                <Checkbox label="Assembly (auto price)" checked={this.state.config.services.indexOf('AssemblyComponent')!==-1} onClick={() => this.toggleService('AssemblyComponent')} />
+              </Card.Content>
+              <Card.Content>
+                <h3>Benefits</h3>
+                <Checkbox label="NEW" checked={this.state.config.new} onClick={() => this.toogleNew()} /><br/>
+                <Checkbox label="Guarantee" checked={this.state.config.guarantee} onClick={() => this.toggleGua()} />
+              </Card.Content>
+
+          </Card>
         </Card.Group>
          <Container className="settings-element" fluid>
 
@@ -303,7 +368,9 @@ class Settings extends Component {
 const mapStateToProps = (state, ownProps) => ({
     combinations: state.settings.combinations,
     displayID: state.settings.config.displayID,
-    cookies: ownProps.cookies
+    cookies: ownProps.cookies,
+    services: state.settings.config.services,
+    config: state.settings.config
 });
 
 const mapDispatchToProps = dispatch => {

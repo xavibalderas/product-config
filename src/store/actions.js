@@ -9,7 +9,8 @@ export const TYPES = {
   CONFIG_LOADED: 'CONFIG_LOADED',
   ITEMS_LOADED: 'ITEMS_LOADED',
   SETTINGS_LOADED: 'SETTINGS_LOADED',
-  SAVE_SETTINGS: 'SAVE_SETTINGS'
+  SAVE_SETTINGS: 'SAVE_SETTINGS',
+  TOOGLE_SERVICE: 'TOOGLE_SERVICE'
 }
 
 export const actions = {
@@ -17,7 +18,7 @@ export const actions = {
   logInOut: (bool) => ({ type: TYPES.LOG_IN_OUT, bool }),
   saveConfig: (products) => ({ type: TYPES.SAVE_CONFIG, products }),
   saveSettings: (config) => ({ type: TYPES.SAVE_SETTINGS, config }),
-
+  toogleService: (service) => ({ type: TYPES.TOOGLE_SERVICE, service }),
   requestProducts: (products) => ({ type: TYPES.REQUEST_PRODUCTS, products }),
   receiveProducts: (productsInfo) => ({ type: TYPES.RECEIVE_PRODUCTS, productsInfo }),
   loadingConfig: (bool) => ({ type: TYPES.LOADING_CONFIG, bool }),

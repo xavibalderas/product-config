@@ -25,7 +25,10 @@ const initialStates = {
       ]
     ],
     config: {
-      diplayID: ''
+      diplayID: '',
+      services:['TransportComponent'],
+      guarantee: false,
+      new: false
     },
     loadingConfig: false,
     isFetching: false,
@@ -42,6 +45,16 @@ const initialStates = {
 
 export const settings = (state = initialStates.settings, action) => {
   switch (action.type) {
+    case TYPES.TOOGLE_SERVICE:
+      let _s = state.services.slice(0);
+      const _pos = _s.indexOf(action.service);
+      if (_pos === -1){
+        _s.push(action.service);
+      }else{
+        _s = _s.splice(_pos, 1);
+      }
+      return Object.assign({}, state, { services: _s });
+
     case TYPES.ACCESS_SETUP:
       return Object.assign({}, state, { accessSetup: action.bool });
 
