@@ -54,7 +54,7 @@ class SettingsButton extends React.Component{
          </Segment>
          </Modal.Content>
          <p>
-         v.0.2
+         v.0.3
          </p>
 
        </Modal>
