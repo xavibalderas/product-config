@@ -12,7 +12,7 @@ const mapStateToProps = (state) => ({
 
 const _calculateServicePrice = (price) => {
   let _p = "99.-";
-
+  console.log(price);
   if (price < 150){
       _p = '49.-';
   }else if (price >=150 && price < 1500) {
