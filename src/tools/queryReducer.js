@@ -22,6 +22,7 @@ const queryReducer = {
   },
 
   formatPrice: (price) => {
+
     if (price===undefined || price==null)
       return '';
     let _p = price.toString();
@@ -30,7 +31,7 @@ const queryReducer = {
 
     let _pos = _p.indexOf('.');
     if (_pos === -1)
-      return price;
+      return price + '.-';
 
     let _v = _p.substring(0, _pos);
     let _c = _p.substring(_pos);

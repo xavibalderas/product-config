@@ -27,7 +27,7 @@ class BenefitsController extends Component {
       }
       {
           _guarantee &&
-          <div className="new_logo"><img src="/images/new.png" /></div>
+          <div className="new_logo"><img src="/images/guarantee.png" /></div>
       }
 
       </div>

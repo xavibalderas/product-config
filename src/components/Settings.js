@@ -337,7 +337,7 @@ class Settings extends Component {
               <Card.Content>
                 <h3>Benefits</h3>
                 <Checkbox label="NEW" checked={this.state.config.new} onClick={() => this.toogleNew()} /><br/>
-                <Checkbox label="Guarantee" checked={this.state.config.guarantee} onClick={() => this.toggleGua()} />
+                <Checkbox label="Guarantee" checked={this.state.config.guarantee} onClick={() => this.toogleGua()} />
               </Card.Content>
 
           </Card>
