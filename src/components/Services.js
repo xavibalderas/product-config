@@ -50,8 +50,10 @@ class Services extends Component {
 
   render(){
 
-    const _services = this.props.services;
+    const _services = this.props.services == undefined ?  ['TransportComponent'] : this.props.services;
     const price = _calculateServicePrice(this.props.combination, this.props.products);
+    //settings.config.services = settings.config.services== undefined ? ['TransportComponent'] : action.settings.services;
+    
     return(
       <Item.Group>
       {_services.map((service)=>{

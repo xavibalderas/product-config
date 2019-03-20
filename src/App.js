@@ -118,6 +118,7 @@ class RootContainer extends Component{
         if (result.data.combinations.length > 0){
           const _d = _c[0];
           const settings = _d.settings;
+          
           this.props.settingsLoaded(settings.config);
           if (settings.combinations.length > 0){
             this.props.configLoaded(settings.combinations);

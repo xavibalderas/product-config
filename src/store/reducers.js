@@ -69,7 +69,7 @@ export const settings = (state = initialStates.settings, action) => {
         isFetching: false,
         combinations: action.combinations
       });
-    case TYPES.SETTINGS_LOADED:
+    case TYPES.SETTINGS_LOADED:  
       return Object.assign({}, state, {
         config: action.settings
       });
