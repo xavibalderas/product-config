@@ -5,17 +5,53 @@ import queryReducer from '../tools/queryReducer';
 import ReactGA from 'react-ga';
 
 
-const _calculatePrice = (combination, products) => {
-
+const _calculatePrice = (combination, products, family = false) => {
+  if (family){
+    console.log(combination);
+    console.log(products);
+  }
   return combination.reduce((accumulator, currentValue) => {
     let price = accumulator;
     let i_price = 0;
     if (currentValue.isValid && products.hasOwnProperty(currentValue.itemno)){
-      i_price = products[currentValue.itemno].RetailItemCommPriceList.RetailItemCommPrice.Price * currentValue.qty;
+      if (!family && products[currentValue.itemno].RetailItemCommPriceList.RetailItemCommPrice.RetailPriceType=='IKEAFamilySalesUnitPrice'){
+        i_price = products[currentValue.itemno].RetailItemCommPriceList.RetailItemCommPrice.PriceNotOffer * currentValue.qty;
+      }else{
+        i_price = products[currentValue.itemno].RetailItemCommPriceList.RetailItemCommPrice.Price * currentValue.qty;
+      }
     }
     return price + i_price;
   }, 0)
 
+}
+
+const checkFamilyPrice =(products, combination) =>{
+  var family = false;
+  for (var i = 0; i < combination.length; i++) {
+    if(products[combination[i].itemno].RetailItemCommPriceList.RetailItemCommPrice.RetailPriceType=='IKEAFamilySalesUnitPrice'){
+      family = true;
+    }
+  }
+  return family;
+}
+
+const checkMainFamily =(product) =>{
+  return product.RetailItemCommPriceList.RetailItemCommPrice.RetailPriceType=='IKEAFamilySalesUnitPrice';
+}
+
+const familyPeriod = (products, combination) =>{
+  let period = "";
+
+  for (var i = 0; i < combination.length; i++) {
+    if(products[combination[i].itemno].RetailItemCommPriceList.RetailItemCommPrice.RetailPriceType=='IKEAFamilySalesUnitPrice'){
+      console.log(products[combination[i].itemno]);
+      let priceField = products[combination[i].itemno].RetailItemCommPriceList.RetailItemCommPrice;
+      let from = priceField.ValidFromDateTime;
+      let to = priceField.ValidToDateTime;
+      period = "Gültig vom " + from + ' bis ' + to;
+    }
+  }
+  return period;
 }
 
 const hasReference = (element) => {
@@ -72,6 +108,9 @@ class CombinationInfo extends React.Component {
     const products = this.props.products;
     if (combination.length === 0) return null;
     const main = combination[0].itemno;
+    const family = checkMainFamily(products[main]);
+    const familyCombination =checkFamilyPrice(products, combination);
+
     if (!combination[0].isValid) return null;
     return (
       <Segment basic>
@@ -80,9 +119,21 @@ class CombinationInfo extends React.Component {
           {products[main].ProductName}
           <Header.Subheader>{products[main].ItemMeasureReferenceTextMetric}</Header.Subheader>
         </Header>
-
+        {family == true &&
+          <p className="family_claim">IKEA FAMILY Preis</p>
+        }
         <h1 className="product_price">{queryReducer.formatPrice(products[main].RetailItemCommPriceList.RetailItemCommPrice.Price)}</h1>
-        <p>Komplettpreis: {queryReducer.formatPrice(_calculatePrice(combination, products))} <Icon name="question" onClick={this.handleOpenPrice}/></p>
+        {family == true &&
+          <p className="family_period">{familyPeriod(products, combination)}</p>
+        }
+        {familyCombination == true &&
+          <p className="family_claim">IKEA FAMILY Preis</p>
+        }
+        <p><span className="complete_price">Komplettpreis: {queryReducer.formatPrice(_calculatePrice(combination, products, familyCombination))} <Icon name="question" onClick={this.handleOpenPrice}/></span>
+        {familyCombination == true &&
+          <span><br/><span className="normal_preis">Normalpreis: {queryReducer.formatPrice(_calculatePrice(combination, products))}</span><br/><span className="family_period">{familyPeriod(products, combination)}</span></span>
+        }</p>
+
         {products[main].DesignerNameComm != null ? <p>Designed by: {products[main].DesignerNameComm}</p>:null}
         <p>{products[main].RetailItemCustomerBenefitSummaryText}</p>
 
@@ -108,17 +159,37 @@ class CombinationInfo extends React.Component {
        <Table.Body>
        {combination.map((item, key)=>{
          if (!products.hasOwnProperty(item.itemno)) return null;
+         let familyArt = checkMainFamily(products[item.itemno])
          return(
            <Table.Row key={key}>
              {item.isValid ? <Table.Cell textAlign="right">{item.qty}x</Table.Cell> : null}
              {item.isValid ? <SubProductInfo icon={false} article={products[item.itemno]}/> : null}
-             {item.isValid ? <Table.Cell><h3>{queryReducer.formatPrice(products[item.itemno].RetailItemCommPriceList.RetailItemCommPrice.Price) }</h3></Table.Cell> : null}
+             {item.isValid ? <Table.Cell className="pricedetail">
+               <Header as='h4' image>
+               {familyArt && <Header.Subheader><span className="family_claim">IKEA FAMILY Preis</span></Header.Subheader>}
+               {queryReducer.formatPrice(products[item.itemno].RetailItemCommPriceList.RetailItemCommPrice.Price) }
+               {familyArt && <Header.Subheader><span className="normal_preis">Normalpreis: {queryReducer.formatPrice(products[item.itemno].RetailItemCommPriceList.RetailItemCommPrice.PriceNotOffer)}</span><br/><span className="family_period">{familyPeriod(products, combination)}</span></Header.Subheader>}
+               </Header>
+               </Table.Cell> : null}
+
+
          </Table.Row>
          )
        })}
         <Table.Row>
           <Table.Cell></Table.Cell><Table.Cell textAlign="right"><h3>Komplettpreis</h3></Table.Cell>
-          <Table.Cell><h3>{queryReducer.formatPrice(_calculatePrice(combination, products))}</h3></Table.Cell>
+
+            <Table.Cell className="pricedetail">
+              <Header as='h4' image>
+                <Header.Content>
+                  {familyCombination && <Header.Subheader><span className="family_claim">IKEA FAMILY Preis</span></Header.Subheader>}
+                  {queryReducer.formatPrice(_calculatePrice(combination, products, familyCombination))}
+                  {familyCombination && <Header.Subheader><span className="normal_preis">Normalpreis: {queryReducer.formatPrice(_calculatePrice(combination, products))}</span><br/><span className="family_period">{familyPeriod(products, combination)}</span></Header.Subheader>}
+                </Header.Content>
+              </Header>
+            </Table.Cell>
+
+
         </Table.Row>
 
         </Table.Body>

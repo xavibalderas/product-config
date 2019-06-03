@@ -4,3 +4,15 @@
   bottom: 20px;
   right: 10px;
 }
+.family_claim{
+  color:#f60!important;
+  margin-bottom: 0px;
+  font-weight: bold;
+}
+
+.family_period, .complete_price{
+  font-weight: bold;
+}
+td.pricedetail h4.ui.header .sub.header{
+  font-size: 0.8rem;
+}

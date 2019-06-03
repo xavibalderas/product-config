@@ -31,6 +31,10 @@ query products($productList: [String]!, $lang: String!) {
       RetailItemCommPrice{
         Price
         CurrencyCode
+        RetailPriceType
+        ValidFromDateTime
+        ValidToDateTime
+        PriceNotOffer
       }
     }
     RetailItemCustomerBenefitList{
