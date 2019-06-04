@@ -30,7 +30,7 @@ class AssemblyComponent extends Component {
         <Item.Content>
           <Item.Header as='a'>Montageservice</Item.Header>
           <Item.Description>
-            {_p} <br/>
+            <h3>{_p}</h3>
             <small>(Basispauschale CHF 100.00 + 17% des Warenwerts)</small>
           </Item.Description>
         </Item.Content>

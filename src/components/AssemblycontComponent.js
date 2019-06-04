@@ -31,7 +31,7 @@ class AssenblyContinental extends Component {
         <Item.Content>
           <Item.Header as='a'>Montageservice</Item.Header>
           <Item.Description>
-            180.- pro Boxspringbett
+            <h3>180.- pro Boxspringbett</h3>
           </Item.Description>
         </Item.Content>
       </Item>
