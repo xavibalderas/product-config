@@ -42,7 +42,9 @@ class Transport extends Component {
         <Item.Content>
           <Item.Header as='a'>Lieferservice</Item.Header>
           <Item.Description>
-            {_p}
+            <h3>{_p}</h3>
+            <strong>Expresslieferung +20.-</strong>
+            <small>Wenn du nur ca. 30 Min. Fahrzeit von IKEA entfernt wohnst, können wir dir deine Einkäufe innerhalb von <strong>48 Stunden</strong> als Expresslieferung zu dir bringen.</small>
           </Item.Description>
         </Item.Content>
       </Item>

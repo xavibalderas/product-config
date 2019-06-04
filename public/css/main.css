@@ -16,3 +16,11 @@
 td.pricedetail h4.ui.header .sub.header{
   font-size: 0.8rem;
 }
+
+.service_info{
+  font-size: 0.7rem;
+}
+.service_price{
+  font-weight: bold;
+  font-size: 1.2rem;
+}

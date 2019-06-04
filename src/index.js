@@ -17,7 +17,7 @@ import { withApollo } from 'react-apollo';
 const URI_API = process.env.REACT_APP_GRAPHCMS_API;
 
 const client = new ApolloClient({
-      //uri: //'http://localhost:51830/'//'https://graphqlserver-productsinfo.herokuapp.com/'
+      //uri: 'https://graphqlserver-productsinfo.herokuapp.com/'
       uri: URI_API
 })
 
